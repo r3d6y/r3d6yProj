@@ -508,6 +508,13 @@ ul.services li{
 	padding: 33px;
 }
 
+.enter_input{
+
+}
+
 .enter_input input{
 	width: 100%;
+    height: 36px;
+    border: 2px #000 solid;
+    border-radius: 2px;
 }
