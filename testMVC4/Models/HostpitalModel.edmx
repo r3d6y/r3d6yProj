@@ -1,0 +1,742 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище HospitalDBContext" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoryLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Level" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DoctorCvalification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LevelId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="DoctorInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkPhone" Type="int" />
+          <Property Name="Photo" Type="text" />
+          <Property Name="UnitId" Type="bigint" />
+          <Property Name="CvalId" Type="bigint" />
+          <Property Name="LocationId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Diagnos" Type="text" />
+          <Property Name="Description" Type="text" />
+          <Property Name="DoctorId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="HospitalUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numb" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" />
+          <Property Name="UnitId" Type="bigint" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "hospitalDB.dbo.Pacient_History" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Pacient_History">
+          <Key>
+            <PropertyRef Name="HistoryId" />
+            <PropertyRef Name="PacientId" />
+          </Key>
+          <Property Name="HistoryId" Type="bigint" Nullable="false" />
+          <Property Name="PacientId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PacientInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardNumber" Type="int" />
+          <Property Name="SocialNumber" Type="int" />
+          <Property Name="Phone" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReceptionHour">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Week" Type="int" Nullable="false" />
+          <Property Name="Day" Type="int" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Duration" Type="time" Precision="7" Nullable="false" />
+          <Property Name="DoctorId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ReceptionTicket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numb" Type="int" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Check" Type="int" Nullable="false" />
+          <Property Name="PacientId" Type="bigint" />
+          <Property Name="DoctorId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DoctorInfo" Type="int" />
+          <Property Name="PacientInfo" Type="int" />
+        </EntityType>
+        <Association Name="FK__DoctorCva__Level__108B795B">
+          <End Role="CategoryLevel" Type="Self.CategoryLevel" Multiplicity="0..1" />
+          <End Role="DoctorCvalification" Type="Self.DoctorCvalification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DoctorCvalification">
+              <PropertyRef Name="LevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DoctorInf__CvalI__1B0907CE">
+          <End Role="DoctorCvalification" Type="Self.DoctorCvalification" Multiplicity="0..1" />
+          <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorCvalification">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DoctorInfo">
+              <PropertyRef Name="CvalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DoctorInf__Locat__1BFD2C07">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DoctorInfo">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DoctorInf__UnitI__1A14E395">
+          <End Role="HospitalUnit" Type="Self.HospitalUnit" Multiplicity="0..1" />
+          <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalUnit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DoctorInfo">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__History__DoctorI__20C1E124">
+          <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Location__UnitId__15502E78">
+          <End Role="HospitalUnit" Type="Self.HospitalUnit" Multiplicity="0..1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalUnit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pacient_H__Histo__22AA2996">
+          <End Role="History" Type="Self.History" Multiplicity="1" />
+          <End Role="Pacient_History" Type="Self.Pacient_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="History">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pacient_History">
+              <PropertyRef Name="HistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pacient_H__Pacie__239E4DCF">
+          <End Role="PacientInfo" Type="Self.PacientInfo" Multiplicity="1" />
+          <End Role="Pacient_History" Type="Self.Pacient_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PacientInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pacient_History">
+              <PropertyRef Name="PacientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reception__Docto__286302EC">
+          <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="0..1" />
+          <End Role="ReceptionHour" Type="Self.ReceptionHour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceptionHour">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reception__Docto__2F10007B">
+          <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="0..1" />
+          <End Role="ReceptionTicket" Type="Self.ReceptionTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceptionTicket">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reception__Pacie__2E1BDC42">
+          <End Role="PacientInfo" Type="Self.PacientInfo" Multiplicity="0..1" />
+          <End Role="ReceptionTicket" Type="Self.ReceptionTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PacientInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceptionTicket">
+              <PropertyRef Name="PacientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище HospitalDBContextContainer">
+          <EntitySet Name="CategoryLevel" EntityType="Self.CategoryLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoctorCvalification" EntityType="Self.DoctorCvalification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoctorInfo" EntityType="Self.DoctorInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HospitalUnit" EntityType="Self.HospitalUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PacientInfo" EntityType="Self.PacientInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceptionHour" EntityType="Self.ReceptionHour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceptionTicket" EntityType="Self.ReceptionTicket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacient_History" EntityType="Self.Pacient_History" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Pacient_History].[HistoryId] AS [HistoryId], 
+[Pacient_History].[PacientId] AS [PacientId]
+FROM [dbo].[Pacient_History] AS [Pacient_History]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__DoctorCva__Level__108B795B" Association="Self.FK__DoctorCva__Level__108B795B">
+            <End Role="CategoryLevel" EntitySet="CategoryLevel" />
+            <End Role="DoctorCvalification" EntitySet="DoctorCvalification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DoctorInf__CvalI__1B0907CE" Association="Self.FK__DoctorInf__CvalI__1B0907CE">
+            <End Role="DoctorCvalification" EntitySet="DoctorCvalification" />
+            <End Role="DoctorInfo" EntitySet="DoctorInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DoctorInf__Locat__1BFD2C07" Association="Self.FK__DoctorInf__Locat__1BFD2C07">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="DoctorInfo" EntitySet="DoctorInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DoctorInf__UnitI__1A14E395" Association="Self.FK__DoctorInf__UnitI__1A14E395">
+            <End Role="HospitalUnit" EntitySet="HospitalUnit" />
+            <End Role="DoctorInfo" EntitySet="DoctorInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__History__DoctorI__20C1E124" Association="Self.FK__History__DoctorI__20C1E124">
+            <End Role="DoctorInfo" EntitySet="DoctorInfo" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Location__UnitId__15502E78" Association="Self.FK__Location__UnitId__15502E78">
+            <End Role="HospitalUnit" EntitySet="HospitalUnit" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacient_H__Histo__22AA2996" Association="Self.FK__Pacient_H__Histo__22AA2996">
+            <End Role="History" EntitySet="History" />
+            <End Role="Pacient_History" EntitySet="Pacient_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacient_H__Pacie__239E4DCF" Association="Self.FK__Pacient_H__Pacie__239E4DCF">
+            <End Role="PacientInfo" EntitySet="PacientInfo" />
+            <End Role="Pacient_History" EntitySet="Pacient_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reception__Docto__286302EC" Association="Self.FK__Reception__Docto__286302EC">
+            <End Role="DoctorInfo" EntitySet="DoctorInfo" />
+            <End Role="ReceptionHour" EntitySet="ReceptionHour" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reception__Docto__2F10007B" Association="Self.FK__Reception__Docto__2F10007B">
+            <End Role="DoctorInfo" EntitySet="DoctorInfo" />
+            <End Role="ReceptionTicket" EntitySet="ReceptionTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reception__Pacie__2E1BDC42" Association="Self.FK__Reception__Pacie__2E1BDC42">
+            <End Role="PacientInfo" EntitySet="PacientInfo" />
+            <End Role="ReceptionTicket" EntitySet="ReceptionTicket" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalDBContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CategoryLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Level" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DoctorCvalification" Relationship="Self.FK__DoctorCva__Level__108B795B" FromRole="CategoryLevel" ToRole="DoctorCvalification" />
+        </EntityType>
+        <EntityType Name="DoctorCvalification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LevelId" Type="Int64" />
+          <NavigationProperty Name="CategoryLevel" Relationship="Self.FK__DoctorCva__Level__108B795B" FromRole="DoctorCvalification" ToRole="CategoryLevel" />
+          <NavigationProperty Name="DoctorInfo" Relationship="Self.FK__DoctorInf__CvalI__1B0907CE" FromRole="DoctorCvalification" ToRole="DoctorInfo" />
+        </EntityType>
+        <EntityType Name="DoctorInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkPhone" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UnitId" Type="Int64" />
+          <Property Name="CvalId" Type="Int64" />
+          <Property Name="LocationId" Type="Int64" />
+          <NavigationProperty Name="DoctorCvalification" Relationship="Self.FK__DoctorInf__CvalI__1B0907CE" FromRole="DoctorInfo" ToRole="DoctorCvalification" />
+          <NavigationProperty Name="Location" Relationship="Self.FK__DoctorInf__Locat__1BFD2C07" FromRole="DoctorInfo" ToRole="Location" />
+          <NavigationProperty Name="HospitalUnit" Relationship="Self.FK__DoctorInf__UnitI__1A14E395" FromRole="DoctorInfo" ToRole="HospitalUnit" />
+          <NavigationProperty Name="History" Relationship="Self.FK__History__DoctorI__20C1E124" FromRole="DoctorInfo" ToRole="History" />
+          <NavigationProperty Name="ReceptionHour" Relationship="Self.FK__Reception__Docto__286302EC" FromRole="DoctorInfo" ToRole="ReceptionHour" />
+          <NavigationProperty Name="ReceptionTicket" Relationship="Self.FK__Reception__Docto__2F10007B" FromRole="DoctorInfo" ToRole="ReceptionTicket" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Diagnos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DoctorId" Type="Int64" />
+          <NavigationProperty Name="DoctorInfo" Relationship="Self.FK__History__DoctorI__20C1E124" FromRole="History" ToRole="DoctorInfo" />
+          <NavigationProperty Name="PacientInfo" Relationship="Self.Pacient_History" FromRole="History" ToRole="PacientInfo" />
+        </EntityType>
+        <EntityType Name="HospitalUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Unit" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DoctorInfo" Relationship="Self.FK__DoctorInf__UnitI__1A14E395" FromRole="HospitalUnit" ToRole="DoctorInfo" />
+          <NavigationProperty Name="Location" Relationship="Self.FK__Location__UnitId__15502E78" FromRole="HospitalUnit" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numb" Type="Int32" Nullable="false" />
+          <Property Name="Floor" Type="Int32" />
+          <Property Name="UnitId" Type="Int64" />
+          <NavigationProperty Name="DoctorInfo" Relationship="Self.FK__DoctorInf__Locat__1BFD2C07" FromRole="Location" ToRole="DoctorInfo" />
+          <NavigationProperty Name="HospitalUnit" Relationship="Self.FK__Location__UnitId__15502E78" FromRole="Location" ToRole="HospitalUnit" />
+        </EntityType>
+        <EntityType Name="PacientInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardNumber" Type="Int32" />
+          <Property Name="SocialNumber" Type="Int32" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ReceptionTicket" Relationship="Self.FK__Reception__Pacie__2E1BDC42" FromRole="PacientInfo" ToRole="ReceptionTicket" />
+          <NavigationProperty Name="History" Relationship="Self.Pacient_History" FromRole="PacientInfo" ToRole="History" />
+        </EntityType>
+        <EntityType Name="ReceptionHour">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Week" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Duration" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="DoctorId" Type="Int64" />
+          <NavigationProperty Name="DoctorInfo" Relationship="Self.FK__Reception__Docto__286302EC" FromRole="ReceptionHour" ToRole="DoctorInfo" />
+        </EntityType>
+        <EntityType Name="ReceptionTicket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numb" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Check" Type="Int32" Nullable="false" />
+          <Property Name="PacientId" Type="Int64" />
+          <Property Name="DoctorId" Type="Int64" />
+          <NavigationProperty Name="DoctorInfo" Relationship="Self.FK__Reception__Docto__2F10007B" FromRole="ReceptionTicket" ToRole="DoctorInfo" />
+          <NavigationProperty Name="PacientInfo" Relationship="Self.FK__Reception__Pacie__2E1BDC42" FromRole="ReceptionTicket" ToRole="PacientInfo" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DoctorInfo" Type="Int32" />
+          <Property Name="PacientInfo" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__DoctorCva__Level__108B795B">
+          <End Role="CategoryLevel" Type="Self.CategoryLevel" Multiplicity="0..1" />
+          <End Role="DoctorCvalification" Type="Self.DoctorCvalification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DoctorCvalification">
+              <PropertyRef Name="LevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DoctorInf__CvalI__1B0907CE">
+          <End Role="DoctorCvalification" Type="Self.DoctorCvalification" Multiplicity="0..1" />
+          <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorCvalification">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DoctorInfo">
+              <PropertyRef Name="CvalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DoctorInf__Locat__1BFD2C07">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DoctorInfo">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DoctorInf__UnitI__1A14E395">
+          <End Role="HospitalUnit" Type="Self.HospitalUnit" Multiplicity="0..1" />
+          <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalUnit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DoctorInfo">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__History__DoctorI__20C1E124">
+          <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reception__Docto__286302EC">
+          <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="0..1" />
+          <End Role="ReceptionHour" Type="Self.ReceptionHour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceptionHour">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reception__Docto__2F10007B">
+          <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="0..1" />
+          <End Role="ReceptionTicket" Type="Self.ReceptionTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceptionTicket">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Location__UnitId__15502E78">
+          <End Role="HospitalUnit" Type="Self.HospitalUnit" Multiplicity="0..1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalUnit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reception__Pacie__2E1BDC42">
+          <End Role="PacientInfo" Type="Self.PacientInfo" Multiplicity="0..1" />
+          <End Role="ReceptionTicket" Type="Self.ReceptionTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PacientInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceptionTicket">
+              <PropertyRef Name="PacientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pacient_History">
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <End Role="PacientInfo" Type="Self.PacientInfo" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="hospitalDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoryLevel" EntityType="Self.CategoryLevel" />
+          <EntitySet Name="DoctorCvalification" EntityType="Self.DoctorCvalification" />
+          <EntitySet Name="DoctorInfo" EntityType="Self.DoctorInfo" />
+          <EntitySet Name="History" EntityType="Self.History" />
+          <EntitySet Name="HospitalUnit" EntityType="Self.HospitalUnit" />
+          <EntitySet Name="Location" EntityType="Self.Location" />
+          <EntitySet Name="PacientInfo" EntityType="Self.PacientInfo" />
+          <EntitySet Name="ReceptionHour" EntityType="Self.ReceptionHour" />
+          <EntitySet Name="ReceptionTicket" EntityType="Self.ReceptionTicket" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK__DoctorCva__Level__108B795B" Association="Self.FK__DoctorCva__Level__108B795B">
+            <End Role="CategoryLevel" EntitySet="CategoryLevel" />
+            <End Role="DoctorCvalification" EntitySet="DoctorCvalification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DoctorInf__CvalI__1B0907CE" Association="Self.FK__DoctorInf__CvalI__1B0907CE">
+            <End Role="DoctorCvalification" EntitySet="DoctorCvalification" />
+            <End Role="DoctorInfo" EntitySet="DoctorInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DoctorInf__Locat__1BFD2C07" Association="Self.FK__DoctorInf__Locat__1BFD2C07">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="DoctorInfo" EntitySet="DoctorInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DoctorInf__UnitI__1A14E395" Association="Self.FK__DoctorInf__UnitI__1A14E395">
+            <End Role="HospitalUnit" EntitySet="HospitalUnit" />
+            <End Role="DoctorInfo" EntitySet="DoctorInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__History__DoctorI__20C1E124" Association="Self.FK__History__DoctorI__20C1E124">
+            <End Role="DoctorInfo" EntitySet="DoctorInfo" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reception__Docto__286302EC" Association="Self.FK__Reception__Docto__286302EC">
+            <End Role="DoctorInfo" EntitySet="DoctorInfo" />
+            <End Role="ReceptionHour" EntitySet="ReceptionHour" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reception__Docto__2F10007B" Association="Self.FK__Reception__Docto__2F10007B">
+            <End Role="DoctorInfo" EntitySet="DoctorInfo" />
+            <End Role="ReceptionTicket" EntitySet="ReceptionTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Location__UnitId__15502E78" Association="Self.FK__Location__UnitId__15502E78">
+            <End Role="HospitalUnit" EntitySet="HospitalUnit" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reception__Pacie__2E1BDC42" Association="Self.FK__Reception__Pacie__2E1BDC42">
+            <End Role="PacientInfo" EntitySet="PacientInfo" />
+            <End Role="ReceptionTicket" EntitySet="ReceptionTicket" />
+          </AssociationSet>
+          <AssociationSet Name="Pacient_History" Association="Self.Pacient_History">
+            <End Role="History" EntitySet="History" />
+            <End Role="PacientInfo" EntitySet="PacientInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище HospitalDBContextContainer" CdmEntityContainer="hospitalDBEntities">
+          <EntitySetMapping Name="CategoryLevel">
+            <EntityTypeMapping TypeName="HospitalDBContext.CategoryLevel">
+              <MappingFragment StoreEntitySet="CategoryLevel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorCvalification">
+            <EntityTypeMapping TypeName="HospitalDBContext.DoctorCvalification">
+              <MappingFragment StoreEntitySet="DoctorCvalification">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorInfo">
+            <EntityTypeMapping TypeName="HospitalDBContext.DoctorInfo">
+              <MappingFragment StoreEntitySet="DoctorInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="CvalId" ColumnName="CvalId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="History">
+            <EntityTypeMapping TypeName="HospitalDBContext.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Diagnos" ColumnName="Diagnos" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HospitalUnit">
+            <EntityTypeMapping TypeName="HospitalDBContext.HospitalUnit">
+              <MappingFragment StoreEntitySet="HospitalUnit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Location">
+            <EntityTypeMapping TypeName="HospitalDBContext.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Numb" ColumnName="Numb" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PacientInfo">
+            <EntityTypeMapping TypeName="HospitalDBContext.PacientInfo">
+              <MappingFragment StoreEntitySet="PacientInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="SocialNumber" ColumnName="SocialNumber" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceptionHour">
+            <EntityTypeMapping TypeName="HospitalDBContext.ReceptionHour">
+              <MappingFragment StoreEntitySet="ReceptionHour">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceptionTicket">
+            <EntityTypeMapping TypeName="HospitalDBContext.ReceptionTicket">
+              <MappingFragment StoreEntitySet="ReceptionTicket">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Numb" ColumnName="Numb" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Check" ColumnName="Check" />
+                <ScalarProperty Name="PacientId" ColumnName="PacientId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="HospitalDBContext.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DoctorInfo" ColumnName="DoctorInfo" />
+                <ScalarProperty Name="PacientInfo" ColumnName="PacientInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Pacient_History" TypeName="HospitalDBContext.Pacient_History" StoreEntitySet="Pacient_History">
+            <EndProperty Name="History">
+              <ScalarProperty Name="Id" ColumnName="HistoryId" />
+            </EndProperty>
+            <EndProperty Name="PacientInfo">
+              <ScalarProperty Name="Id" ColumnName="PacientId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

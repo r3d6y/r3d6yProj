@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>@ViewBag.Title</title>
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <script src="~/Scripts/bPopup.js"></script>
+</head>
+<body>
+    <header>
+        <div class="menu_wrap">
+            <div class="center">
+                <nav>
+                    <ul class="menu">
+                        <li><a href="" class="active">Главная</a></li>
+                        <li><a href="">Новости</a></li>
+                        <li><a href="">Запись</a></li>
+                        <li><a href="">Контакты</a></li>
+                        <li><a href="">Врачи</a></li>
+                        <li><a href="">О нас</a></li>
+                        <li><a id="enter" class="enter" href="">Вход</a></li>
+                    </ul>
+                </nav>
+
+                <div class="serch_wrapper fr">
+                    <input class="search" type="text" oninput="up(this)" />
+                    <span class="search_ico"></span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="t_center">
+            <div class="main_banner">
+                <img src="~/Content/img/main_banner.png" />
+                <div class="title">
+                    <div class="title_back"></div>
+                    <div class="title_text"><h1>Ваше здоровье</h1></div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+    <footer class="footer">
+        <div class="leave">
+            <img src="~/Content/img/leave.png" />
+        </div>
+        <div class="center">
+            <div class="social fl">
+                <a class="tw" href=""></a>
+                <a class="gp" href=""></a>
+                <a class="fb" href=""></a>
+            </div>
+
+            <div class="footer_contact fr">
+                <p>тел.:  +38 056 999 35 56 <br /> E-mail:  Registratur@gmail.com</p>
+            </div>
+
+        </div>
+
+    </footer><!-- .footer -->
+
+</body>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+@*</body>*@
+</html>
+
+<script>
+    function up(e) {
+        if (e.value.indexOf(".") != '-1') {
+            e.value = e.value.substring(0, e.value.indexOf(".") + 3);
+        }
+    }
+</script>

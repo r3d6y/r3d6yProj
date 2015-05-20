@@ -1,0 +1,36 @@
+﻿@model testMVC4.Models.LoginModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Login error.");
+    <div>
+        
+            @if (ViewBag.IsRegister != null || ViewBag.IsRegister == true)
+            {
+                <div>
+                    <p>Войдите, используя ваш логин и пароль.</p>
+                </div>
+            }
+                
+        <fieldset>
+            <legend>Login Form</legend>
+            <div>
+                @Html.TextBoxFor(u => u.Email)
+                @Html.ValidationMessageFor(u => u.Email)
+            </div>
+            <div>
+                @Html.PasswordFor(u => u.Password)
+                @Html.ValidationMessageFor(u => u.Password)
+            </div>
+            <input type="submit" value="Log In" />
+
+        </fieldset>
+
+    </div>
+
+}

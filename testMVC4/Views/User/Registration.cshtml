@@ -1,0 +1,40 @@
+﻿@model testMVC4.Models.UserModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Login error.");
+    <div>
+        <fieldset>
+            <legend>Registration Form</legend>
+            <div>@Html.LabelFor(u => u.UserName)</div>
+            <div>@Html.TextBoxFor(u => u.UserName)</div>
+            <div>@Html.LabelFor(u => u.SecondName)</div>
+            <div>@Html.TextBoxFor(u => u.SecondName)</div>
+            <div>@Html.LabelFor(u => u.LastName)</div>
+            <div>@Html.TextBoxFor(u => u.LastName)</div>
+            <div>@Html.LabelFor(u => u.Email)</div>
+            <div>
+                @Html.TextBoxFor(u => u.Email)
+                @Html.ValidationMessageFor(u => u.Email)
+            </div>
+            <div>@Html.LabelFor(u => u.Password)</div>
+            <div>
+                @Html.PasswordFor(u => u.Password)
+                @Html.ValidationMessageFor(u => u.Password)
+            </div>
+            <div>@Html.LabelFor(u => u.Birthday)</div>
+            <div>@Html.TextBoxFor(u => u.Birthday)</div>
+            <div>@Html.LabelFor(u => u.Address)</div>
+            <div>@Html.TextBoxFor(u => u.Address)</div>
+            <input type="submit" value="Registration"/>
+
+        </fieldset>
+
+    </div>
+
+}

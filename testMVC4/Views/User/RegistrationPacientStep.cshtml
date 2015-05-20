@@ -1,0 +1,20 @@
+﻿@model testMVC4.Models.PacientModel
+
+@{
+    ViewBag.Title = "RegistrationPacientStep";
+}
+
+<h2>RegistrationPacientStep</h2>
+
+@using(Html.BeginForm())
+{
+    <div>@Html.LabelFor(m => m.CardNumber)</div>
+    <div>@Html.TextBoxFor(m => m.CardNumber)</div>
+    <div>@Html.LabelFor(m => m.SocialNumber)</div>
+    <div>@Html.TextBoxFor(m => m.SocialNumber)</div>
+    <div>@Html.LabelFor(m => m.Phone)</div>
+    <div>@Html.TextBoxFor(m => m.Phone)</div>
+    <div>@Html.HiddenFor(m => m.UserId, new { @class = "invisible_hidden" })</div>
+    
+    <input type="submit" value="Add pacient information" />
+}
