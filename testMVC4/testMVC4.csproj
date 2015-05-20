@@ -226,9 +226,11 @@
     <Content Include="Content\img\equipment3.jpg" />
     <Content Include="Content\img\ico\enter.jpg" />
     <Content Include="Content\img\ico\exit.jpg" />
+    <Content Include="Content\img\ico\pass.png" />
     <Content Include="Content\img\ico\pointer.png" />
     <Content Include="Content\img\ico\search.png" />
     <Content Include="Content\img\ico\social.jpg" />
+    <Content Include="Content\img\ico\user.png" />
     <Content Include="Content\img\leave.png" />
     <Content Include="Content\img\main_banner.png" />
     <Content Include="Content\img\photo1.png" />
