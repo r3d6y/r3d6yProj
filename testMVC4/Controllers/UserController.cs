@@ -17,9 +17,6 @@ namespace testMVC4.Controllers
 
         }   
 
-        //
-        // GET: /User/
-
         public ActionResult Index()
         {
             return View();
@@ -105,7 +102,6 @@ namespace testMVC4.Controllers
             services.UserService.AddPacientInfo(model);
             var user = services.UserService.GetById(model.UserId);
             Session["UserId"] = null;
-            //return RedirectToAction("LogIn", "User", new LoginModel(user));//LogIn(new UserModel(user));
             ViewBag.IsRegister = true;
             return RedirectToAction("LogIn", "User");
         }
