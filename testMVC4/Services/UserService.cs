@@ -78,6 +78,12 @@ namespace testMVC4.Services
             return pacientToCreate;
         }
 
+        public  DoctorInfo AddDoctorInfo(DoctorModel model)
+        {
+            DoctorInfo doctorToCreate = ;
+
+        }
+
         private User CopyUserFromModel(UserModel model)
         {
             User userToCreate = new User();
