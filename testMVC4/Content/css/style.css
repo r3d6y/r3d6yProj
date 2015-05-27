@@ -133,12 +133,12 @@ p{
 
 @font-face {
     font-family: '96089';
-    src: url('fonts/96089.eot');
-    src: url('fonts/96089.eot') format('embedded-opentype'),
-         url('fonts/96089.woff2') format('woff2'),
-         url('fonts/96089.woff') format('woff'),
-         url('fonts/96089.ttf') format('truetype'),
-         url('fonts/96089.svg#96089') format('svg');
+    src: url('../fonts/96089.eot');
+    src: url('../fonts/96089.eot') format('embedded-opentype'),
+         url('../fonts/96089.woff2') format('woff2'),
+         url('../fonts/96089.woff') format('woff'),
+         url('../fonts/96089.ttf') format('truetype'),
+         url('../fonts/96089.svg#96089') format('svg');
 }
 
 
@@ -228,6 +228,18 @@ ul.menu li a.active{
 .enter{
 	text-transform: none;
 	font-weight: bold;
+}
+
+.enter_img{
+    background: url('../img/ico/enter.jpg');
+    display: inline-block;
+    width: 35px;
+    height: 36px;
+    vertical-align: middle;
+}
+
+ul.menu li a:hover .enter_img{
+    background-position: 0 -36px;
 }
 
 input.search{
