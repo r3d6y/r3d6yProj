@@ -125,10 +125,12 @@ p{
     font-family: "helvetica-4-light4-light";
     font-size: 14px;
     width: 209px;
+    background: none;
 }
 
 .input:focus{
     box-shadow: 0px 0px 3px #0CC;
+    background: rgba(256, 256, 256, 0.5);
 }
 
 .ver_align{

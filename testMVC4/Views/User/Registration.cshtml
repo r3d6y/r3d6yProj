@@ -29,7 +29,8 @@
                 <div>@Html.LabelFor(u => u.Email)</div>
                 <div>
                     @Html.TextBoxFor(u => u.Email, new { @class = "input" })
-                    @Html.ValidationMessageFor(u => u.Email)
+                    <p>@Html.ValidationMessageFor(u => u.Email)</p>
+                    
                 </div>
             </div>
 
@@ -37,7 +38,8 @@
                 <div>@Html.LabelFor(u => u.Password)</div>
                 <div>
                     @Html.PasswordFor(u => u.Password, new { @class = "input" })
-                    @Html.ValidationMessageFor(u => u.Password)
+                    <p>@Html.ValidationMessageFor(u => u.Password)</p>
+                    
                 </div>
             </div>
 
