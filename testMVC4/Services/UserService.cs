@@ -78,10 +78,20 @@ namespace testMVC4.Services
             return pacientToCreate;
         }
 
+        public IList<CategoryLevelModel> GetCategories()
+        {
+            List<CategoryLevelModel> categoryList = new List<CategoryLevelModel>();
+
+            var allCat = categoryRepository.ToList();
+            foreach (var c in allCat)
+                categoryList.Add(new CategoryLevelModel(c));
+            return categoryList;
+        }
+
         public  DoctorInfo AddDoctorInfo(DoctorModel model)
         {
-            DoctorInfo doctorToCreate = ;
-
+            //DoctorInfo doctorToCreate = ;
+            return new DoctorInfo();
         }
 
         private User CopyUserFromModel(UserModel model)
@@ -113,6 +123,12 @@ namespace testMVC4.Services
                 pacientToCreate.Id = (long)model.Id;
 
             return pacientToCreate;
+        }
+
+        private DoctorInfo CopyDoctorFromModel(DoctorModel model)
+        {
+            DoctorInfo doctorToCreate = new DoctorInfo();
+            return doctorToCreate;
         }
 
         public void Dispose()

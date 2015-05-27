@@ -110,13 +110,14 @@ namespace testMVC4.Controllers
             return RedirectToAction("LogIn", "User");
         }
 
-        [Authorize]
-        [HttpPost]
+        //[Authorize]
+        [HttpGet]
         public ActionResult AddDoctorInfo()
         {
-            DoctorModel model = new DoctorModel();
+            DoctorModel model = new DoctorModel(services.UserService.GetCategories());
+            //model.Levels = services.UserService.GetCategories();
             
-            return View();
+            return View(model);
         }
 
         [Authorize]

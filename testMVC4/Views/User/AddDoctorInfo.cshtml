@@ -1,0 +1,20 @@
+﻿@model testMVC4.Services.DoctorModel
+
+
+@{
+    ViewBag.Title = "AddDoctorInfo";
+}
+
+
+<h2>Информация о докторе</h2>
+
+@using (Html.BeginForm())
+{
+    <div>@Html.LabelFor(m => m.WorkPhone, new { @class = "class1", id = "id1" })</div>
+    <div>@Html.TextBoxFor(m => m.WorkPhone, new { @class = "class2" })</div>
+    <div>@Html.LabelFor(m => m.Levels, new { id = "id2" })</div>
+    <div>@Html.DropDownListFor(m => m.CvalId, Model.Levels)</div>
+    
+    
+    <input type="submit" value="Add doctor information" />
+}
