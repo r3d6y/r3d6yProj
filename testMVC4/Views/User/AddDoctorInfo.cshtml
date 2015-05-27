@@ -5,16 +5,22 @@
     ViewBag.Title = "AddDoctorInfo";
 }
 
-
-<h2>Информация о докторе</h2>
-
-@using (Html.BeginForm())
+<div class="t_center reg_form">
+    <h2>Информация о докторе</h2>
+    @using (Html.BeginForm())
 {
-    <div>@Html.LabelFor(m => m.WorkPhone, new { @class = "class1", id = "id1" })</div>
-    <div>@Html.TextBoxFor(m => m.WorkPhone, new { @class = "class2" })</div>
-    <div>@Html.LabelFor(m => m.Levels, new { id = "id2" })</div>
-    <div>@Html.DropDownListFor(m => m.CvalId, Model.Levels)</div>
-    
-    
-    <input type="submit" value="Add doctor information" />
+    <div class="input_block">
+        <div>@Html.LabelFor(m => m.WorkPhone)</div>
+        <div>@Html.TextBoxFor(m => m.WorkPhone, new { @class = "input" })</div>
+    </div>
+
+    <div class="input_block">
+        <div>@Html.LabelFor(m => m.Levels, new { id = "id2" })</div>
+        <div>@Html.DropDownListFor(m => m.CvalId, Model.Levels, new { @class = "input" })</div>
+    </div>
+
+    <div class="input_block">
+        <input type="submit" value="Add doctor information" class="button" />
+    </div>
 }
+</div>
