@@ -16,5 +16,6 @@ namespace testMVC4.Services.Interfaces
         User GetByEmail(string email);
         void Update(UserModel model);
         PacientInfo AddPacientInfo(PacientModel model);
+        IList<CategoryLevelModel> GetCategories();
     }
 }

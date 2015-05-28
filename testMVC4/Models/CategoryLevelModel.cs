@@ -12,6 +12,12 @@ namespace testMVC4.Models
 
         }
 
+        public CategoryLevelModel(CategoryLevel level)
+        {
+            Id = level.Id;
+            Level = level.Level;
+        }
+
         public long Id { get; set; }
         public string Level { get; set; }
     }

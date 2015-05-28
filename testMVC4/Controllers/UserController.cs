@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using testMVC4.Models;
+using testMVC4.Services;
 
 namespace testMVC4.Controllers
 {
@@ -91,6 +92,7 @@ namespace testMVC4.Controllers
                 PacientModel model = new PacientModel();
                 model.UserId = Convert.ToInt32(userId);
                 return View(model);
+                //return View("Index", "Home");
             }
             else
                 return View();
@@ -101,9 +103,29 @@ namespace testMVC4.Controllers
         {
             services.UserService.AddPacientInfo(model);
             var user = services.UserService.GetById(model.UserId);
+            LogInAfterRegister(new UserModel(user));
+            
             Session["UserId"] = null;
             ViewBag.IsRegister = true;
             return RedirectToAction("LogIn", "User");
+        }
+
+        //[Authorize]
+        [HttpGet]
+        public ActionResult AddDoctorInfo()
+        {
+            DoctorModel model = new DoctorModel(services.UserService.GetCategories());
+            //model.Levels = services.UserService.GetCategories();
+            
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult AddDoctorInfo(DoctorModel model)
+        {
+
+            return View();
         }
 
         public ActionResult LogOut()
@@ -111,6 +133,8 @@ namespace testMVC4.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
+        #region private methods
         private bool IsValid(string email, string password)
         {
             bool isValid = false;
@@ -131,7 +155,8 @@ namespace testMVC4.Controllers
 
         private void LogInAfterRegister(UserModel user)
         {
-
+            FormsAuthentication.SetAuthCookie(user.Email, false);
         }
+        #endregion
     }
 }
