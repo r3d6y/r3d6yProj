@@ -454,6 +454,37 @@ label {
     color: #323738;
 }
 
+.doctor_filter{
+    width: 306px;
+    margin-right: 27px;
+}
+
+.doctor_filter li{
+    line-height: 50px;
+    background: #323738;
+    text-align: center;
+    margin-bottom: 3px;
+}
+
+.doctor_filter li a{
+    display: inline-block;
+    width: 306px;
+    color: #fff;
+    font-size: 17px;
+    font-family: Arial;
+    font-weight: bold;
+    padding-bottom: 2px;
+}
+
+.doctor_filter li a:hover, .doctor_filter li a.active{
+    background: #00cccc;
+    color: #323738;
+}
+
+.doctor_block{
+    width: 769px;
+}
+
 
 /* Footer
 -----------------------------------------------------------------------------*/
