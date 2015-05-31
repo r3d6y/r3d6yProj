@@ -88,10 +88,32 @@ namespace testMVC4.Services
             return categoryList;
         }
 
+        public IList<UnitModel> GetUnits()
+        {
+            List<UnitModel> unitList = new List<UnitModel>();
+            var allUnit = unitRepository.ToList();
+            foreach (var u in allUnit)
+                unitList.Add(new UnitModel(u));
+            return unitList;
+        }
+
         public  DoctorInfo AddDoctorInfo(DoctorModel model)
         {
             //DoctorInfo doctorToCreate = ;
             return new DoctorInfo();
+        }
+
+        public IList<FullDoctorInfoModel> GetDoctorsList()
+        {
+            List<FullDoctorInfoModel> doctorList = new List<FullDoctorInfoModel>();
+            var allDoctors = doctorRepository.ToList();
+            foreach(var d in allDoctors)
+            {
+                DoctorModel doctor = new DoctorModel(d);
+                UserModel user = new UserModel(userRepository.FirstOrDefault(x => x.DoctorInfo == d.Id));
+                doctorList.Add(new FullDoctorInfoModel(doctor, user));
+            }
+            return doctorList.Where(x => x.UserModel.IsDoctor).ToList();
         }
 
         private User CopyUserFromModel(UserModel model)
@@ -109,6 +131,8 @@ namespace testMVC4.Services
             userToCreate.Email = model.Email;
             if(model.Id != null && model.Id != 0)
                 userToCreate.Id = (long)model.Id;
+            userToCreate.is_doctor = model.IsDoctor;
+            userToCreate.is_admin = model.IsAdmin;
 
             return userToCreate;
         }

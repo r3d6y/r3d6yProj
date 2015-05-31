@@ -26,6 +26,8 @@ namespace testMVC4.Models
             Address = user.Address;
             PacientInfo = user.PacientInfo;
             DoctorInfo = user.DoctorInfo;
+            IsAdmin = user.is_admin;
+            IsDoctor = user.is_doctor;
         }
 
         public long? Id { get; set; }
@@ -60,5 +62,8 @@ namespace testMVC4.Models
         public string PasswordSalt { get; set; }
         public int? DoctorInfo { get; set; }
         public int? PacientInfo { get; set; }
+
+        public bool IsAdmin { get; set; }
+        public bool IsDoctor { get; set; }
     }
 }

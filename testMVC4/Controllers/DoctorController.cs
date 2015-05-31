@@ -22,6 +22,7 @@ namespace testMVC4.Controllers
 
         public ActionResult GetDoctors()
         {
+            
             return View();
         }
 

@@ -20,6 +20,12 @@
     </div>
 
     <div class="input_block">
+        <div>@Html.LabelFor(m => m.Units, new { id = "id2" })</div>
+        <div>@Html.DropDownListFor(m => m.UnitId, Model.Units, new { @class = "input" })</div>
+    </div>
+
+
+    <div class="input_block">
         <input type="submit" value="Add doctor information" class="button" />
     </div>
 }
