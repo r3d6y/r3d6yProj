@@ -109,7 +109,7 @@ namespace testMVC4.Controllers
             Session["UserId"] = null;
             Session["UserName"] = user.Email;
             //return RedirectToAction("LogIn", "User");
-            return View("Home", "Index");
+            return View("Index", "Home");
         }
 
         [Authorize]

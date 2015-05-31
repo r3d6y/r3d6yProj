@@ -25,5 +25,7 @@ namespace testMVC4.Models
         public string Address { get; set; }
         public Nullable<int> DoctorInfo { get; set; }
         public Nullable<int> PacientInfo { get; set; }
+        public bool is_admin { get; set; }
+        public bool is_doctor { get; set; }
     }
 }

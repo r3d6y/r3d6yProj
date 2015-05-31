@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище HospitalDBContext" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище HospitalDBContext" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CategoryLevel">
           <Key>
             <PropertyRef Name="Id" />
@@ -112,6 +112,8 @@
           <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="DoctorInfo" Type="int" />
           <Property Name="PacientInfo" Type="int" />
+          <Property Name="is_admin" Type="bit" Nullable="false" />
+          <Property Name="is_doctor" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK__DoctorCva__Level__108B795B">
           <End Role="CategoryLevel" Type="Self.CategoryLevel" Multiplicity="0..1" />
@@ -307,8 +309,7 @@ FROM [dbo].[Pacient_History] AS [Pacient_History]</DefiningQuery>
             <End Role="ReceptionTicket" EntitySet="ReceptionTicket" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HospitalDBContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -429,6 +430,8 @@ FROM [dbo].[Pacient_History] AS [Pacient_History]</DefiningQuery>
           <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DoctorInfo" Type="Int32" />
           <Property Name="PacientInfo" Type="Int32" />
+          <Property Name="is_admin" Type="Boolean" Nullable="false" />
+          <Property Name="is_doctor" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__DoctorCva__Level__108B795B">
           <End Role="CategoryLevel" Type="Self.CategoryLevel" Multiplicity="0..1" />
@@ -694,6 +697,8 @@ FROM [dbo].[Pacient_History] AS [Pacient_History]</DefiningQuery>
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="HospitalDBContext.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="is_doctor" ColumnName="is_doctor" />
+                <ScalarProperty Name="is_admin" ColumnName="is_admin" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

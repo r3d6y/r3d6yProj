@@ -113,7 +113,7 @@ namespace testMVC4.Services
                 UserModel user = new UserModel(userRepository.FirstOrDefault(x => x.DoctorInfo == d.Id));
                 doctorList.Add(new FullDoctorInfoModel(doctor, user));
             }
-            return doctorList;
+            return doctorList.Where(x => x.UserModel.IsDoctor).ToList();
         }
 
         private User CopyUserFromModel(UserModel model)
@@ -131,6 +131,8 @@ namespace testMVC4.Services
             userToCreate.Email = model.Email;
             if(model.Id != null && model.Id != 0)
                 userToCreate.Id = (long)model.Id;
+            userToCreate.is_doctor = model.IsDoctor;
+            userToCreate.is_admin = model.IsAdmin;
 
             return userToCreate;
         }
