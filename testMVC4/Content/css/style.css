@@ -483,6 +483,8 @@ label {
 .doctor_filter{
     width: 306px;
     margin-right: 27px;
+    width: 306px;
+    z-index: 100;
 }
 
 .doctor_filter li{
