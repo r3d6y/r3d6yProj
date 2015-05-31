@@ -220,11 +220,14 @@
     <Content Include="Content\fonts\96089.svg" />
     <Content Include="Content\fonts\helv4light-demo.html" />
     <Content Include="Content\fonts\helv4light-webfont.svg" />
+    <Content Include="Content\fonts\helveticaneuecyr-light-webfont.svg" />
     <Content Include="Content\fonts\stylesheet.css" />
     <Content Include="Content\img\content_img1.png" />
+    <Content Include="Content\img\doctor_photo1.png" />
     <Content Include="Content\img\equipment1.jpg" />
     <Content Include="Content\img\equipment2.jpg" />
     <Content Include="Content\img\equipment3.jpg" />
+    <Content Include="Content\img\ico\arrow_down.png" />
     <Content Include="Content\img\ico\enter.jpg" />
     <Content Include="Content\img\ico\exit.jpg" />
     <Content Include="Content\img\ico\pass.png" />
@@ -265,6 +268,7 @@
     <Content Include="Content\fonts\helv4light-webfont.woff2" />
     <Content Include="Scripts\bPopup.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -297,6 +301,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Doctor\GetDoctors.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\helveticaneuecyr-light-webfont.eot" />
+    <Content Include="Content\fonts\helveticaneuecyr-light-webfont.ttf" />
+    <Content Include="Content\fonts\helveticaneuecyr-light-webfont.woff" />
+    <Content Include="Content\fonts\helveticaneuecyr-light-webfont.woff2" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
