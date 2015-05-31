@@ -50,8 +50,8 @@
                         <li><a href="@Url.Action("Index", "Home")" class="active">Главная</a></li>
                         <li><a href="">Новости</a></li>
                         <li><a href="@Url.Action("GetDoctors", "Doctor")">Консультация врача</a></li>
-                        <li><a href="">Контакты</a></li>
-                        <li><a href="">О нас</a></li>
+                        <li><a href="@Url.Action("Contacts", "Home")">Контакты</a></li>
+                        <li><a href="@Url.Action("AboutUs", "Home")">О нас</a></li>
                         @{
                             if (Session["UserName"] != null)
                             {
@@ -86,9 +86,9 @@
     </header>
     @RenderBody()
     <footer class="footer">
-        <div class="leave">
+        @*<div class="leave">
             <img src="~/Content/img/leave.png" />
-        </div>
+        </div>*@
         <div class="center">
             <div class="social fl">
                 <a class="tw" href=""></a>

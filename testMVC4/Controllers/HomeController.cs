@@ -16,6 +16,12 @@ namespace testMVC4.Controllers
             ViewBag.Var1 = "ololo";
             return View();
         }
-
+        public ActionResult AboutUs() {
+            return View(); 
+        }
+        public ActionResult Contacts()
+        {
+            return View();
+        }
     }
 }

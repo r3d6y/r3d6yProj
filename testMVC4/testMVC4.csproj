@@ -223,12 +223,15 @@
     <Content Include="Content\fonts\helv4light-webfont.svg" />
     <Content Include="Content\fonts\helveticaneuecyr-light-webfont.svg" />
     <Content Include="Content\fonts\stylesheet.css" />
+    <Content Include="Content\img\aboutus_pic1.jpg" />
+    <Content Include="Content\img\aboutus_pic2.jpg" />
     <Content Include="Content\img\content_img1.png" />
     <Content Include="Content\img\doctor_photo1.png" />
     <Content Include="Content\img\equipment1.jpg" />
     <Content Include="Content\img\equipment2.jpg" />
     <Content Include="Content\img\equipment3.jpg" />
     <Content Include="Content\img\ico\arrow_down.png" />
+    <Content Include="Content\img\ico\email.png" />
     <Content Include="Content\img\ico\enter.jpg" />
     <Content Include="Content\img\ico\exit.jpg" />
     <Content Include="Content\img\ico\pass.png" />
@@ -238,6 +241,8 @@
     <Content Include="Content\img\ico\user.png" />
     <Content Include="Content\img\leave.png" />
     <Content Include="Content\img\main_banner.png" />
+    <Content Include="Content\img\map.jpg" />
+    <Content Include="Content\img\ico\phone.png" />
     <Content Include="Content\img\photo1.png" />
     <Content Include="Content\img\photo2.png" />
     <Content Include="Content\img\photo3.png" />
@@ -308,6 +313,12 @@
     <Content Include="Content\fonts\helveticaneuecyr-light-webfont.ttf" />
     <Content Include="Content\fonts\helveticaneuecyr-light-webfont.woff" />
     <Content Include="Content\fonts\helveticaneuecyr-light-webfont.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AboutUs.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Contacts.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
