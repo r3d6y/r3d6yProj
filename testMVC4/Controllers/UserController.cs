@@ -37,6 +37,7 @@ namespace testMVC4.Controllers
                 if(IsValid(user.Email, user.Password))
                 {
                     FormsAuthentication.SetAuthCookie(user.Email, false);
+                    ViewBag.UserName = user.Email;
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -106,15 +107,16 @@ namespace testMVC4.Controllers
             LogInAfterRegister(new UserModel(user));
             
             Session["UserId"] = null;
-            ViewBag.IsRegister = true;
-            return RedirectToAction("LogIn", "User");
+            Session["UserName"] = user.Email;
+            //return RedirectToAction("LogIn", "User");
+            return View("Home", "Index");
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public ActionResult AddDoctorInfo()
         {
-            DoctorModel model = new DoctorModel(services.UserService.GetCategories());
+            DoctorModel model = new DoctorModel(services.UserService.GetCategories(), services.UserService.GetUnits());
             //model.Levels = services.UserService.GetCategories();
             
             return View(model);
@@ -131,6 +133,7 @@ namespace testMVC4.Controllers
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
+            Session["UserName"] = null;
             return RedirectToAction("Index", "Home");
         }
 
@@ -147,7 +150,10 @@ namespace testMVC4.Controllers
                 if(user != null)
                 {
                     if (user.Password == crypto.Compute(password, user.PasswordSalt))
+                    { 
                         isValid = true;
+                        Session["UserName"] = user.Email;
+                    }
                 }
             }
             return isValid;
@@ -156,6 +162,7 @@ namespace testMVC4.Controllers
         private void LogInAfterRegister(UserModel user)
         {
             FormsAuthentication.SetAuthCookie(user.Email, false);
+            ViewBag.Auth = true;
         }
         #endregion
     }

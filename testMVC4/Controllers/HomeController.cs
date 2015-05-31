@@ -13,6 +13,7 @@ namespace testMVC4.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Var1 = "ololo";
             return View();
         }
 

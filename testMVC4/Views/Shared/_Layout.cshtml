@@ -51,7 +51,16 @@
                         <li><a href="@Url.Action("GetDoctors", "Doctor")">Консультация врача</a></li>
                         <li><a href="">Контакты</a></li>
                         <li><a href="">О нас</a></li>
-                        <li><a id="my-button" class="enter" href=""><span class="enter_img"></span>Вход</a></li>
+                        @{
+                            if (Session["UserName"] != null)
+                            {
+                                <li><a id="my-button" class="enter" href=""><span class="enter_img"></span>Выход</a></li>
+                            }
+                            else
+                            {
+                                <li><a id="my-button" class="enter" href=""><span class="enter_img"></span>Вход</a></li>
+                            }
+                        }
                     </ul>
                 </nav>
 

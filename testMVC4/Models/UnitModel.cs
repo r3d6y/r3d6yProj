@@ -7,9 +7,10 @@ namespace testMVC4.Models
 {
     public class UnitModel
     {
-        public UnitModel()
+        public UnitModel(HospitalUnit unit)
         {
-
+            Id = unit.Id;
+            Unit = unit.Unit;
         }
 
         public long Id { get; set; }

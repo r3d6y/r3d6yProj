@@ -17,5 +17,7 @@ namespace testMVC4.Services.Interfaces
         void Update(UserModel model);
         PacientInfo AddPacientInfo(PacientModel model);
         IList<CategoryLevelModel> GetCategories();
+        IList<UnitModel> GetUnits();
+        IList<FullDoctorInfoModel> GetDoctorsList();
     }
 }

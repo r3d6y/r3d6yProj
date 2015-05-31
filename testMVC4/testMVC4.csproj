@@ -165,6 +165,7 @@
     <Compile Include="Models\DoctorInfo.cs">
       <DependentUpon>HostpitalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FullDoctorInfoModel.cs" />
     <Compile Include="Models\History.cs">
       <DependentUpon>HostpitalModel.tt</DependentUpon>
     </Compile>
