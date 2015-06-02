@@ -16,7 +16,7 @@ namespace testMVC4.Controllers
             : base(new Services.Services())
         {
 
-        }   
+        }
 
         public ActionResult Index()
         {
@@ -32,9 +32,9 @@ namespace testMVC4.Controllers
         [HttpPost]
         public ActionResult LogIn(LoginModel user)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                if(IsValid(user.Email, user.Password))
+                if (IsValid(user.Email, user.Password))
                 {
                     FormsAuthentication.SetAuthCookie(user.Email, false);
                     ViewBag.UserName = user.Email;
@@ -57,7 +57,7 @@ namespace testMVC4.Controllers
         [HttpPost]
         public ActionResult Registration(UserModel user)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 Session["UserId"] = null;
                 var userEmaiValid = services.UserService.GetByEmail(user.Email);
@@ -105,7 +105,7 @@ namespace testMVC4.Controllers
             services.UserService.AddPacientInfo(model);
             var user = services.UserService.GetById(model.UserId);
             LogInAfterRegister(new UserModel(user));
-            
+
             Session["UserId"] = null;
             Session["UserName"] = user.Email;
             //return RedirectToAction("LogIn", "User");
@@ -118,7 +118,7 @@ namespace testMVC4.Controllers
         {
             DoctorModel model = new DoctorModel(services.UserService.GetCategories(), services.UserService.GetUnits());
             //model.Levels = services.UserService.GetCategories();
-            
+
             return View(model);
         }
 
@@ -143,14 +143,14 @@ namespace testMVC4.Controllers
             bool isValid = false;
             var crypto = new PBKDF2();
 
-            using(var db = new hospitalDBEntities())
+            using (var db = new hospitalDBEntities())
             {
                 var user = db.User.FirstOrDefault(u => u.Email == email);
 
-                if(user != null)
+                if (user != null)
                 {
                     if (user.Password == crypto.Compute(password, user.PasswordSalt))
-                    { 
+                    {
                         isValid = true;
                         Session["UserName"] = user.Email;
                     }

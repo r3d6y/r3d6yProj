@@ -3,5 +3,4 @@ $(document).ready(function () {
     $('#arrow_toggle').click(function () {
         $('#toggle_doctor').slideToggle("slow");
     });
-
 });

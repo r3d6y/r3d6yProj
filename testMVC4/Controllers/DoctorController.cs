@@ -22,8 +22,8 @@ namespace testMVC4.Controllers
 
         public ActionResult GetDoctors()
         {
-            
-            return View();
+            var model = services.UserService.GetDoctorsList();
+            return View(model);
         }
 
     }
