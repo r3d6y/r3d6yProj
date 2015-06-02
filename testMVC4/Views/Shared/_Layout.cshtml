@@ -47,11 +47,13 @@
             <div class="center">
                 <nav>
                     <ul class="menu">
-                        <li><a href="@Url.Action("Index", "Home")" class="active">Главная</a></li>
-                        <li><a href="">Новости</a></li>
-                        <li><a href="@Url.Action("GetDoctors", "Doctor")">Консультация врача</a></li>
-                        <li><a href="@Url.Action("Contacts", "Home")">Контакты</a></li>
-                        <li><a href="@Url.Action("AboutUs", "Home")">О нас</a></li>
+                        <li><a href="@Url.Action("Index", "Home")" id="Index">Главная</a></li>
+                        @*<li><a href="@Url.Action("Index", "Home")" class="active">@ViewBag.Title</a></li>*@
+                        <li><a href="" class="menu_item" id="News">Новости</a></li>
+                        <li><a href="@Url.Action("GetDoctors", "Doctor")" id="GetDoctors">Консультация врача</a></li>
+                        <li><a href="@Url.Action("Contacts", "Home")" id="Contacts">Контакты</a></li>
+                        <li><a href="@Url.Action("AboutUs", "Home")" id="AboutUs">О нас</a></li>
+
                         @{
                             if (Session["UserName"] != null)
                             {
@@ -64,7 +66,6 @@
                         }
                     </ul>
                 </nav>
-
                 <div class="serch_wrapper fr">
                     <input class="search" type="text" />
                     <span class="search_ico"></span>
@@ -103,9 +104,20 @@
         </div>
 
     </footer><!-- .footer -->
-
-</body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log('bla');
+            $('.menu li a').each(function () {
+                if ($(this).prop('id') == '@ViewBag.Title')
+                    $(this).addClass('active');
+                else
+                    $(this).removeClass('active');
+            });
+        });
+    </script>
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+</body>
+    
 @*</body>*@
 </html>

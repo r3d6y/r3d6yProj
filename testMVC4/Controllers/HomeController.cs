@@ -26,6 +26,7 @@ namespace testMVC4.Controllers
 
         public ActionResult News()
         {
+
             return View();
         }
 
