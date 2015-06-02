@@ -14,9 +14,20 @@
             e.preventDefault();
 
             // Triggering bPopup when click event is fired
-            $('#element_to_pop_up').bPopup();
+            $('.enter_pop_up').bPopup();
 
         });
+
+        $('#enroll').bind('click', function (e) {
+
+            // Prevents the default action to be triggered. 
+            e.preventDefault();
+
+            // Triggering bPopup when click event is fired
+            $('.enroll_pop_up').bPopup();
+
+        });
+        
 
     });
 

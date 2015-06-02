@@ -150,7 +150,8 @@ h3{
 	font-size: 17px;
 	color: #191a1c;
 	text-transform: uppercase;
-	margin-bottom: 16px;
+	margin-bottom: 12px;
+    margin-top: 10px;
 	font-weight: bold;
 }
 
@@ -340,7 +341,7 @@ input.search{
 }
 
 .info_block_padding{
-	padding: 8px 7px 7px 34px;	
+	padding: 13px 7px 13px 34px;	
 }
 
 .info_block_padding img{
@@ -354,14 +355,19 @@ input.search{
 	color: #191a1c;
 }
 
-ul.services{
+ul.services, ul.news_list{
 	 list-style-image: url(../img/ico/pointer.png);
 }
 
-ul.services li{
+ul.services li,  ul.news_list li{
 	font-family: 'helvetica-4-light4-light';
 	font-size: 14px;
 	font-variant: small-caps;
+}
+
+.news_menu{
+    width: 300px !important;
+    margin-right: 25px;
 }
 
 .central_block{
@@ -545,6 +551,7 @@ label {
     padding: 4px 0;
     transition: linear 0.2s;
     border: none;
+    cursor: pointer;
 }
 
 .button_small:hover{
@@ -633,6 +640,39 @@ label {
     width: 22px;
     height: 16px;
     margin-right: 10px;
+}
+
+.aboutus p{
+    text-align: justify;
+}
+
+
+.news_block{
+    width: 570px;
+}
+
+.news_img img{
+    width: 256px;
+    height: 256px;
+}
+
+.news_info{
+    height: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 270px;
+}
+
+.news_info h3{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.news_block_footer{
+    bottom: 12px;
+    position: absolute;
+    right: 15px;
+    width: 270px;
 }
 
 /* Footer
@@ -811,7 +851,7 @@ label {
   margin-bottom: 13px;
 }
 
-.avtorization button{
+#element_to_pop_up button{
     background: #00cccc;
     width: 100%;
     border: none;
@@ -822,6 +862,19 @@ label {
     cursor: pointer;
 }
 
-.avtorization button:hover{
+#element_to_pop_up button:hover{
     color: #323738;
+}
+
+/* enroll_popup
+-----------------------------------------------------------------------------*/
+
+.enroll_pop_up p.name{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.enroll_pop_up p.error{
+    text-align: center;
+    color: #e8204a;
 }
