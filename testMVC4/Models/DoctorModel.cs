@@ -27,30 +27,32 @@ namespace testMVC4.Services
         public DoctorModel(IList<CategoryLevelModel> categories, IList<UnitModel> units)
         {
             Levels = categories.Select(x => new SelectListItem
-                {
-                    Value = x.Id.ToString(),
-                    Text = x.Level
-                });
+            {
+                Value = x.Id.ToString(),
+                Text = x.Level
+            });
             Units = units.Select(x => new SelectListItem
-                {
-                    Value = x.Id.ToString(),
-                    Text = x.Unit
-                });
+            {
+                Value = x.Id.ToString(),
+                Text = x.Unit
+            });
         }
 
         public long Id { get; set; }
-        [Display(Name="Рабочий телефон: ")]
+        [Display(Name = "Рабочий телефон: ")]
         public int? WorkPhone { get; set; }
         public string Photo { get; set; }
         public int UnitId { get; set; }
         public int CvalId { get; set; }
         public int LocationId { get; set; }
-        [Display(Name="Категория врача: ")]
+        [Display(Name = "Категория врача: ")]
         public IEnumerable<SelectListItem> Levels { get; set; }
         [Display(Name = "Отделение: ")]
         public IEnumerable<SelectListItem> Units { get; set; }
 
         public UnitModel Unit { get; set; }
         public DoctorCvalificationModel Cval { get; set; }
+
+        public int UserId { get; set; }
     }
 }

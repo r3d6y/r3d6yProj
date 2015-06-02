@@ -16,7 +16,7 @@ namespace testMVC4.Services
         private readonly BaseRepository<Location> locationRepository;
         private readonly BaseRepository<CategoryLevel> categoryRepository;
         private readonly BaseRepository<HospitalUnit> unitRepository;
-        
+
 
         public UserService()
         {
@@ -46,7 +46,7 @@ namespace testMVC4.Services
 
         public IEnumerable<User> List()
         {
-            return userRepository.ToList();    
+            return userRepository.ToList();
         }
 
         public User GetById(int id)
@@ -69,13 +69,27 @@ namespace testMVC4.Services
         {
             PacientInfo pacientToCreate = CopyPacientFromModel(model);
             var user = userRepository.FirstOrDefault(u => u.Id == model.UserId);
-            if(user != null)
+            if (user != null)
             {
                 pacientRepository.Insert(ref pacientToCreate);
                 user.PacientInfo = (int?)pacientToCreate.Id;
                 userRepository.Update(user);
             }
             return pacientToCreate;
+        }
+
+        public DoctorInfo AddDoctorInfo(DoctorModel model)
+        {
+            DoctorInfo doctorToCreate = CopyDoctorFromModel(model);
+            var user = userRepository.FirstOrDefault(u => u.Id == model.UserId);
+            if (user != null)
+            {
+                doctorRepository.Insert(ref doctorToCreate);
+                user.DoctorInfo = (int?)doctorToCreate.Id;
+                user.is_doctor = true;
+                userRepository.Update(user);
+            }
+            return doctorToCreate;
         }
 
         public IList<CategoryLevelModel> GetCategories()
@@ -97,17 +111,11 @@ namespace testMVC4.Services
             return unitList;
         }
 
-        public  DoctorInfo AddDoctorInfo(DoctorModel model)
-        {
-            //DoctorInfo doctorToCreate = ;
-            return new DoctorInfo();
-        }
-
         public IList<FullDoctorInfoModel> GetDoctorsList()
         {
             List<FullDoctorInfoModel> doctorList = new List<FullDoctorInfoModel>();
             var allDoctors = doctorRepository.ToList();
-            foreach(var d in allDoctors)
+            foreach (var d in allDoctors)
             {
                 DoctorModel doctor = new DoctorModel(d);
                 UserModel user = new UserModel(userRepository.FirstOrDefault(x => x.DoctorInfo == d.Id));
@@ -129,7 +137,7 @@ namespace testMVC4.Services
             userToCreate.DoctorInfo = model.DoctorInfo;
             userToCreate.PacientInfo = model.PacientInfo;
             userToCreate.Email = model.Email;
-            if(model.Id != null && model.Id != 0)
+            if (model.Id != null && model.Id != 0)
                 userToCreate.Id = (long)model.Id;
             userToCreate.is_doctor = model.IsDoctor;
             userToCreate.is_admin = model.IsAdmin;
@@ -152,6 +160,10 @@ namespace testMVC4.Services
         private DoctorInfo CopyDoctorFromModel(DoctorModel model)
         {
             DoctorInfo doctorToCreate = new DoctorInfo();
+            doctorToCreate.CvalId = model.CvalId;
+            doctorToCreate.Id = model.Id;
+            doctorToCreate.WorkPhone = model.WorkPhone;
+            doctorToCreate.Photo = model.Photo;
             return doctorToCreate;
         }
 
