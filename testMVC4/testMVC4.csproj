@@ -244,6 +244,7 @@
     <Content Include="Content\img\main_banner.png" />
     <Content Include="Content\img\map.jpg" />
     <Content Include="Content\img\ico\phone.png" />
+    <Content Include="Content\img\news1.jpg" />
     <Content Include="Content\img\photo1.png" />
     <Content Include="Content\img\photo2.png" />
     <Content Include="Content\img\photo3.png" />
