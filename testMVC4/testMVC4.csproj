@@ -191,6 +191,7 @@
       <DependentUpon>HostpitalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LocationModel.cs" />
+    <Compile Include="Models\LoginJsonMode.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PacientInfo.cs">
       <DependentUpon>HostpitalModel.tt</DependentUpon>

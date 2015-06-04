@@ -1,9 +1,12 @@
-﻿using SimpleCrypto;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using SimpleCrypto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using System.Web.Security;
 using testMVC4.Models;
 using testMVC4.Services;
@@ -46,6 +49,39 @@ namespace testMVC4.Controllers
                 }
             }
             return RedirectToAction("Index", "Home");//View("Index", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult LoginAjax(string email, string password)
+        {
+            //JavaScriptSerializer js = new JavaScriptSerializer();
+            //var model = js.Deserialize<LoginJsonMode>(data);
+            if(IsValid(email, password))
+            {
+                FormsAuthentication.SetAuthCookie(email, false);
+                ViewBag.UserName = email;
+                //return RedirectToAction("Index", "Home");
+                var settings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
+                var JsonResult = new ContentResult
+                {
+                    Content = JsonConvert.SerializeObject(true, settings),
+                    ContentType = "application/json"
+                };
+                return JsonResult;
+            }
+            else
+            {
+                ModelState.AddModelError("", "Login data is incorrect.");
+                var settings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
+                var JsonResult = new ContentResult
+                {
+                    Content = JsonConvert.SerializeObject(false, settings),
+                    ContentType = "application/json"
+                };
+                return JsonResult;
+                //return RedirectToAction("Index", "Home");
+            }
+            //return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -109,7 +145,7 @@ namespace testMVC4.Controllers
             Session["UserId"] = null;
             Session["UserName"] = user.Email;
             //return RedirectToAction("LogIn", "User");
-            return View("Index", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [Authorize]

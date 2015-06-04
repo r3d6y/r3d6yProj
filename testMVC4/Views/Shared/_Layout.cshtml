@@ -22,16 +22,16 @@
                     <p>Авторизация</p>
                 </div>
                 <div class="pop_up_padding avtorization">
-                    <div class="enter_input">
+                    <div class="enter_input" id="email_div">
                         <img src="~/content/img/ico/user.png" />
                         <div class="input_margin">
-                            <input />
+                            <input id="email" name="email"/>
                         </div>
                     </div>
-                    <div class="enter_input">
+                    <div class="enter_input" id="password_div">
                         <img src="~/Content/img/ico/pass.png" />
                         <div class="input_margin">
-                            <input />
+                            <input id="password" name="password"/>
                         </div>
                     </div>
                     <div class="pop_up_link fl">
@@ -39,7 +39,7 @@
                         <a href="@Url.Action("Registration", "User")">Регистрация</a>
                     </div>
                     <div class="clear"></div>
-                    <button>Войти</button>
+                    <button id="enter">Войти</button>
                 </div>
         </div>
 
@@ -57,7 +57,7 @@
                         @{
                             if (Session["UserName"] != null)
                             {
-                                <li><a id="my-button" class="enter" href=""><span class="enter_img"></span>Выход</a></li>
+                                <li><a id="my-button1" class="enter" href="@Url.Action("LogOut", "User")"><span class="enter_img"></span>Выход</a></li>
                             }
                             else
                             {
@@ -112,6 +112,21 @@
                     $(this).addClass('active');
                 else
                     $(this).removeClass('active');
+            });
+            $('#enter').on('click', function () {
+
+                $.post('/User/LoginAjax', { email: $('#email').val(), password: $('#password').val() })
+                    .success(function (data) {
+                        if(data == true)
+                        {
+                            window.location = "/Home/Index";
+                        }
+                        else
+                        {
+                            $('.input_margin').css('border-color', 'red');
+                            console.log(data);
+                        }
+                    });
             });
         });
     </script>
