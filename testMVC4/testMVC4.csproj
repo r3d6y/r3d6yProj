@@ -150,6 +150,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,6 +194,10 @@
     <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\LoginJsonMode.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\News.cs">
+      <DependentUpon>HostpitalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewsModel.cs" />
     <Compile Include="Models\PacientInfo.cs">
       <DependentUpon>HostpitalModel.tt</DependentUpon>
     </Compile>
@@ -201,6 +206,9 @@
       <DependentUpon>HostpitalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ReceptionTicket.cs">
+      <DependentUpon>HostpitalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>HostpitalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitModel.cs" />
@@ -212,8 +220,10 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Models\DoctorModel.cs" />
     <Compile Include="Models\DoctorCvalificationModel.cs" />
+    <Compile Include="Services\Interfaces\INewsService.cs" />
     <Compile Include="Services\Interfaces\IService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
+    <Compile Include="Services\NewsService.cs" />
     <Compile Include="Services\Services.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
@@ -327,6 +337,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\OneNews.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\Administrate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\DoctorsManage.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

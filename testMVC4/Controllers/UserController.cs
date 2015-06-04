@@ -173,6 +173,39 @@ namespace testMVC4.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
+        public ActionResult Administrate()
+        {
+            if (Session["UserName"] != null)
+            {
+                var user = services.UserService.GetByEmail(Session["UserName"].ToString());
+                if(!user.is_admin)
+                    return RedirectToAction("Index", "Home");
+
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Home");
+
+            //return View();
+        }
+
+        [Authorize]
+        public ActionResult DoctorsManage()
+        {
+            List<UserModel> allUsers = services.UserService.List().Select(u => new UserModel(u)).ToList();
+
+
+            return View(allUsers);
+        }
+
+        [Authorize]
+        public ActionResult NewsManage()
+        {
+            List<NewsModel> allNews = services.NewsService.List().Select(n => new NewsModel(n)).ToList();
+            return View(allNews);
+        }
+
         #region private methods
         private bool IsValid(string email, string password)
         {

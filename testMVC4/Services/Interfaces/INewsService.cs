@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using testMVC4.Models;
 
 namespace testMVC4.Services.Interfaces
 {
-    public interface IService
+    public interface INewsService
     {
-        IUserService UserService { get; }
-        INewsService NewsService { get; }
+        IEnumerable<News> List();
     }
 }

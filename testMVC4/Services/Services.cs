@@ -14,12 +14,21 @@ namespace testMVC4.Services
         }
 
         private IUserService userService;
+        private INewsService newsService;
 
         public IUserService UserService
         {
             get
             {
                 return userService = userService ?? new UserService();
+            }
+        }
+
+        public INewsService NewsService
+        {
+            get
+            {
+                return newsService = newsService ?? new NewsService();
             }
         }
     }

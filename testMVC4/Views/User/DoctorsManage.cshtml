@@ -1,0 +1,34 @@
+﻿@model List<testMVC4.Models.UserModel>
+
+@{
+    ViewBag.Title = "DoctorsManage";
+}
+
+<h2>DoctorsManage</h2>
+
+
+<table>
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>surname</td>
+        <td>lastname</td>
+        <td>b. day</td>
+        <td>email</td>
+        <td>is doctor</td>
+        <td>button</td>
+    </tr>
+    @foreach (var u in Model)
+    {
+        <tr>
+            <td>@u.Id</td>
+            <td>@u.UserName</td>
+            <td>@u.SecondName</td>
+            <td>@u.LastName</td>
+            <td>@u.Birthday</td>
+            <td>@u.Email</td>
+            <td>@u.IsDoctor</td>
+            <td><button>Set</button></td>
+        </tr>
+    }
+</table>

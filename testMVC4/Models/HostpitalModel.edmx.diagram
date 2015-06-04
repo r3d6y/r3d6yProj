@@ -25,6 +25,8 @@
         <AssociationConnector Association="HospitalDBContext.FK__Location__UnitId__15502E78" ManuallyRouted="false" />
         <AssociationConnector Association="HospitalDBContext.FK__Reception__Pacie__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="HospitalDBContext.Pacient_History" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HospitalDBContext.News" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="HospitalDBContext.sysdiagrams" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

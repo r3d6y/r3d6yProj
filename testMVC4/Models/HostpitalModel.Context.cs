@@ -35,5 +35,7 @@ namespace testMVC4.Models
         public DbSet<ReceptionHour> ReceptionHour { get; set; }
         public DbSet<ReceptionTicket> ReceptionTicket { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<News> News { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
