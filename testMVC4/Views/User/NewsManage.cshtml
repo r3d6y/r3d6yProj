@@ -1,0 +1,25 @@
+﻿@model List<testMVC4.Models.NewsModel>
+
+@{
+    ViewBag.Title = "NewsManage";
+}
+
+<h2>NewsManage</h2>
+
+<table>
+    <tr>
+        <td>id</td>
+        <td>title</td>
+        <td>edit</td>
+        <td>delete</td>
+    </tr>
+    @foreach (var u in Model)
+    {
+        <tr>
+            <td>@u.Id</td>
+            <td>@u.Title</td>
+            <td><button>Edit</button></td>
+            <td><button>Delete</button></td>
+        </tr>
+    }
+</table>

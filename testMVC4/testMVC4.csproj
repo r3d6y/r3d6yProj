@@ -344,6 +344,12 @@
   <ItemGroup>
     <Content Include="Views\User\DoctorsManage.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\NewsManage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\News\AddNews.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
