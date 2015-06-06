@@ -1,5 +1,9 @@
-﻿@{
+﻿@model testMVC4.Models.NewsModel
+@{
     ViewBag.Title = "OneNews";
 }
 
 <h2>OneNews</h2>
+
+<div>@Html.LabelFor(x => x.Title)</div>
+<div>@Html.LabelFor(x => x.Text)</div>
