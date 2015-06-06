@@ -20,5 +20,6 @@ namespace testMVC4.Services.Interfaces
         IList<CategoryLevelModel> GetCategories();
         IList<UnitModel> GetUnits();
         IList<FullDoctorInfoModel> GetDoctorsList();
+        DoctorInfo AddDoctorInfo(DoctorModel model);
     }
 }

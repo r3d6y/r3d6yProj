@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using testMVC4.Models;
 
 namespace testMVC4.Controllers
 {
@@ -22,7 +23,7 @@ namespace testMVC4.Controllers
 
         public ActionResult GetDoctors()
         {
-            var model = services.UserService.GetDoctorsList();
+            IList<FullDoctorInfoModel> model = services.UserService.GetDoctorsList();
             return View(model);
         }
 

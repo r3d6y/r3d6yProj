@@ -163,8 +163,9 @@ namespace testMVC4.Controllers
         [HttpPost]
         public ActionResult AddDoctorInfo(DoctorModel model)
         {
-
-            return View();
+            model.UserId = Convert.ToInt32(services.UserService.GetByEmail(Session["UserName"].ToString()).Id);
+            services.UserService.AddDoctorInfo(model);
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult LogOut()
@@ -245,7 +246,7 @@ namespace testMVC4.Controllers
             bool isValid = false;
             var crypto = new PBKDF2();
 
-            using (var db = new hospitalDBEntities())
+            using (var db = new hospitalDBEntities1())
             {
                 var user = db.User.FirstOrDefault(u => u.Email == email);
 

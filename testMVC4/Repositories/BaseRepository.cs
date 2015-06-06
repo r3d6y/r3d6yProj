@@ -16,7 +16,7 @@ namespace testMVC4.Repositories
 
         public BaseRepository()
         {
-            _context = new hospitalDBEntities();
+            _context = new hospitalDBEntities1();
             _objectSet = _context.Set<T>();
         }
 

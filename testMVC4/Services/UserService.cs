@@ -82,14 +82,22 @@ namespace testMVC4.Services
         public DoctorInfo AddDoctorInfo(DoctorModel model)
         {
             DoctorInfo doctorToCreate = CopyDoctorFromModel(model);
-            var user = userRepository.FirstOrDefault(u => u.Id == model.UserId);
-            if (user != null)
+            try
             {
-                doctorRepository.Insert(ref doctorToCreate);
-                user.DoctorInfo = (int?)doctorToCreate.Id;
-                user.is_doctor = true;
-                userRepository.Update(user);
+                var user = userRepository.FirstOrDefault(u => u.Id == model.UserId);
+                if (user != null)
+                {
+                    doctorRepository.Insert(ref doctorToCreate);
+                    user.DoctorInfo = (int?)doctorToCreate.Id;
+                    user.is_doctor = true;
+                    userRepository.Update(user);
+                }
             }
+            catch(Exception ex)
+            {
+
+            }
+            
             return doctorToCreate;
         }
 
@@ -170,9 +178,12 @@ namespace testMVC4.Services
         {
             DoctorInfo doctorToCreate = new DoctorInfo();
             doctorToCreate.CvalId = model.CvalId;
+            doctorToCreate.UnitId = model.UnitId;
             doctorToCreate.Id = model.Id;
             doctorToCreate.WorkPhone = model.WorkPhone;
             doctorToCreate.Photo = model.Photo;
+            doctorToCreate.SpecificName = model.SpecificName;
+            doctorToCreate.AboutDoc = model.AboutDoc;
             return doctorToCreate;
         }
         #endregion

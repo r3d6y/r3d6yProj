@@ -21,7 +21,10 @@ namespace testMVC4.Services
             WorkPhone = model.WorkPhone;
             Photo = model.Photo;
             Unit = new UnitModel(model.HospitalUnit);
-            Cval = new DoctorCvalificationModel(model.DoctorCvalification);
+            //Cval = new DoctorCvalificationModel(model.DoctorCvalification);
+            AboutDoc = model.AboutDoc;
+            SpecificName = model.SpecificName;
+            Category = new CategoryLevelModel(model.CategoryLevel);
         }
 
         public DoctorModel(IList<CategoryLevelModel> categories, IList<UnitModel> units)
@@ -49,9 +52,14 @@ namespace testMVC4.Services
         public IEnumerable<SelectListItem> Levels { get; set; }
         [Display(Name = "Отделение: ")]
         public IEnumerable<SelectListItem> Units { get; set; }
+        [Display(Name = "Название специальности")]
+        public string SpecificName { get; set; }
+        [Display(Name = "Подробная информация")]
+        public string AboutDoc { get; set; }
 
         public UnitModel Unit { get; set; }
-        public DoctorCvalificationModel Cval { get; set; }
+        public CategoryLevelModel Category { get; set; }
+        //public DoctorCvalificationModel Cval { get; set; }
 
         public int UserId { get; set; }
     }
