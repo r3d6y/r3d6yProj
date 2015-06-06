@@ -10,5 +10,6 @@ namespace testMVC4.Services.Interfaces
     {
         IUserService UserService { get; }
         INewsService NewsService { get; }
+        IReceptionService ReceptionService { get; }
     }
 }

@@ -15,6 +15,7 @@ namespace testMVC4.Services
 
         private IUserService userService;
         private INewsService newsService;
+        private IReceptionService receptionService;
 
         public IUserService UserService
         {
@@ -29,6 +30,14 @@ namespace testMVC4.Services
             get
             {
                 return newsService = newsService ?? new NewsService();
+            }
+        }
+
+        public IReceptionService ReceptionService
+        {
+            get
+            {
+                return receptionService = receptionService ?? new ReceptionService();
             }
         }
     }

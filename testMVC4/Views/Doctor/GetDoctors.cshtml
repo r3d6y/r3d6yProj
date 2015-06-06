@@ -48,9 +48,9 @@
                     <div class="doctors_info fl">
                         <p class="name">@d.UserModel.UserName @d.UserModel.SecondName @d.UserModel.LastName</p>
                         @*<p>Врач-аллерголог высшей категории</p>*@
-                        <p>@d.DoctorModel.Unit.Unit</p>
+                        <p>@d.DoctorModel.SpecificName</p>
                         @*<p>Детский врач-аллерголог высшей категории</p>*@
-                        <p>@d.DoctorModel.</p>
+                        @*<p>@d.DoctorModel</p>*@
                         <div class="specialization">
                             <p>Подразделение: @d.DoctorModel.Unit.Unit</p>
                         </div>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div id="toggle_doctor" class="info_block doctor_block info_block_padding fl">
-                    <p>	Заведующий ЛОР-кабинетом «Клиники семейной медицины». Врач высшей категории, кандидат медицинских наук, доцент. Выпускник Днепропетровского медицинского института. Первичную специализацию прошел в 1966г. в ЛОР-Клинике ДМИ под руководством профессора Л.А. Луковского и доцента Г.М. Тытаря. Владеет современными методами диагностики, консервативного и хирургического лечения заболеваний ЛОР-органов. </p>
+                    <p>	@d.DoctorModel.AboutDoc </p>
 
                     <p class="marker">Кабинет №2: ЛОР</p>
                     <p class="marker">Время приёма:</p>

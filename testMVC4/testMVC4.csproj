@@ -202,6 +202,7 @@
     <Compile Include="Models\ReceptionHour.cs">
       <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReceptionModel.cs" />
     <Compile Include="Models\ReceptionTicket.cs">
       <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
@@ -215,9 +216,11 @@
     <Compile Include="Models\DoctorModel.cs" />
     <Compile Include="Models\DoctorCvalificationModel.cs" />
     <Compile Include="Services\Interfaces\INewsService.cs" />
+    <Compile Include="Services\Interfaces\IReceptionService.cs" />
     <Compile Include="Services\Interfaces\IService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
     <Compile Include="Services\NewsService.cs" />
+    <Compile Include="Services\ReceptionService.cs" />
     <Compile Include="Services\Services.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
@@ -350,6 +353,9 @@
       <DependentUpon>HospitalModel.edmx</DependentUpon>
       <LastGenOutput>HospitalModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\ReceptionManage.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

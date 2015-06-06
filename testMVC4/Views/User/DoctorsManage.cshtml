@@ -17,6 +17,7 @@
         <td>email</td>
         <td>is doctor</td>
         <td>button</td>
+        <td>manage reception</td>
     </tr>
     @foreach (var u in Model)
     {
@@ -38,6 +39,17 @@
                     <b>Unset Status</b>
                 }
                 </button></td>
+            <td>
+            @if (u.IsDoctor && u.DoctorInfo != null)
+            {
+                <a href="@Url.Action("ReceptionManage", "User", new { id = @u.Id })">edit reception</a>
+            }
+            else
+            {
+                <a href="">none</a>
+            }
+                
+            </td>
         </tr>
     }
 </table>

@@ -1,0 +1,44 @@
+﻿@model List<testMVC4.Models.ReceptionModel>
+
+@{
+    ViewBag.Title = "ReceptionManage";
+}
+
+<h2>ReceptionManage</h2>
+
+
+<table id="reception_table">
+    <tr>
+        <td>Day of week</td>
+        <td>Time of statr</td>
+        <td>Duration</td>
+        <td>Button</td>
+    </tr>
+    @{
+        foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.DayName</td>
+                <td>@Html.TextBoxFor(x => x.FirstOrDefault(z => z.Id == m.Id).Time)</td>
+                <td>@Html.TextBoxFor((x => x.FirstOrDefault(z => z.Id == m.Id).Duration))</td>
+                <td><button id="@m.Id">Edit</button></td>
+                @Html.HiddenFor((x => x.FirstOrDefault(z => z.Id == m.Id).Day))
+                @Html.HiddenFor((x => x.FirstOrDefault(z => z.Id == m.Id).Week))
+                @Html.HiddenFor((x => x.FirstOrDefault(z => z.Id == m.Id).Id))
+                @Html.HiddenFor((x => x.FirstOrDefault(z => z.Id == m.Id).DoctorId))
+            </tr>
+        }
+    }
+</table>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.reception_table tr td button').on('click', function () {
+            var reception =
+                {
+                    id: '1'
+                };//todo: post request with reception's data (how to join hidden to jquery)
+        });
+    });
+</script>

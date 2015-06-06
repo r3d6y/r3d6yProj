@@ -165,6 +165,11 @@ namespace testMVC4.Controllers
         {
             model.UserId = Convert.ToInt32(services.UserService.GetByEmail(Session["UserName"].ToString()).Id);
             services.UserService.AddDoctorInfo(model);
+
+            //todo: add receptions for week
+            services.ReceptionService.AddReceptionHoursForUser(model.UserId);
+
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -238,6 +243,25 @@ namespace testMVC4.Controllers
                 ContentType = "application/json"
             };
             return JsonResult;
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult ReceptionManage(int id)
+        {
+            //var user = services.UserService.GetById(id);
+            var receptionHours = services.ReceptionService.GetReceptionByUserId(id).Select(x => new ReceptionModel(x)).ToList();
+            
+            return View(receptionHours);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult ReceptionManage(List<ReceptionModel> model)
+        {
+            services.ReceptionService.UpdateReceptionsForUser(model);
+
+            return RedirectToAction("DoctorManage", "User");
         }
 
         #region private methods
