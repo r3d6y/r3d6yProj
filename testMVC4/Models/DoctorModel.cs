@@ -41,6 +41,28 @@ namespace testMVC4.Services
             });
         }
 
+        public DoctorModel(DoctorInfo model, IList<CategoryLevelModel> categories, IList<UnitModel> units)
+        {
+            Id = model.Id;
+            WorkPhone = model.WorkPhone;
+            Photo = model.Photo;
+            Unit = new UnitModel(model.HospitalUnit);
+            //Cval = new DoctorCvalificationModel(model.DoctorCvalification);
+            AboutDoc = model.AboutDoc;
+            SpecificName = model.SpecificName;
+            Category = new CategoryLevelModel(model.CategoryLevel);
+            Levels = categories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Level
+            });
+            Units = units.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Unit
+            });
+        }
+
         public long Id { get; set; }
         [Display(Name = "Рабочий телефон: ")]
         public int? WorkPhone { get; set; }

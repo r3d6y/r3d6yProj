@@ -21,5 +21,7 @@ namespace testMVC4.Services.Interfaces
         IList<UnitModel> GetUnits();
         IList<FullDoctorInfoModel> GetDoctorsList();
         DoctorInfo AddDoctorInfo(DoctorModel model);
+        DoctorInfo GetDoctorById(int id);
+        void UpdateDoctorInfo(DoctorModel model);
     }
 }

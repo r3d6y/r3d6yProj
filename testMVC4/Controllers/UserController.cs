@@ -264,6 +264,14 @@ namespace testMVC4.Controllers
             return RedirectToAction("DoctorManage", "User");
         }
 
+        [Authorize]
+        [HttpGet]
+        public ActionResult Profil()
+        {
+            var user = services.UserService.GetByEmail(Session["UserName"].ToString());
+            return View(user);
+        }
+
         #region private methods
         private bool IsValid(string email, string password)
         {

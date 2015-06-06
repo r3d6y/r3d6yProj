@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using testMVC4.Models;
+using testMVC4.Services;
 
 namespace testMVC4.Controllers
 {
@@ -25,6 +26,23 @@ namespace testMVC4.Controllers
         {
             IList<FullDoctorInfoModel> model = services.UserService.GetDoctorsList();
             return View(model);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult EditDoctorsProfile()
+        {
+            var user = services.UserService.GetByEmail(Session["UserName"].ToString());
+            var doctorInfo = new DoctorModel(services.UserService.GetDoctorById((int)user.DoctorInfo), services.UserService.GetCategories(), services.UserService.GetUnits());
+            return View(doctorInfo);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditDoctorsProfile(DoctorModel model)
+        {
+            services.UserService.UpdateDoctorInfo(model);
+            return RedirectToAction("Profil", "User");
         }
 
     }

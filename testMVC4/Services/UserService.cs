@@ -140,6 +140,25 @@ namespace testMVC4.Services
             userRepository.Update(user);
         }
 
+        public DoctorInfo GetDoctorById(int id)
+        {
+            return doctorRepository.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void UpdateDoctorInfo(DoctorModel model)
+        {
+            var doctorToUpdate = doctorRepository.FirstOrDefault(x => x.Id == model.Id);
+            doctorToUpdate.AboutDoc = model.AboutDoc;
+            doctorToUpdate.CvalId = model.CvalId;
+            if(model.LocationId > 0)
+                doctorToUpdate.LocationId = model.LocationId = model.LocationId;// > 0 ? model.LocationId : doctorToUpdate.LocationId;
+            doctorToUpdate.Photo = model.Photo;
+            doctorToUpdate.UnitId = model.UnitId;
+            doctorToUpdate.WorkPhone = model.WorkPhone;
+
+            doctorRepository.Update(doctorToUpdate);
+        }
+
         #region private methods
         private User CopyUserFromModel(UserModel model)
         {
