@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Web.Security;
 using testMVC4.Models;
+using testMVC4.Repositories;
 using testMVC4.Services;
 
 namespace testMVC4.Controllers
@@ -56,7 +57,7 @@ namespace testMVC4.Controllers
         {
             //JavaScriptSerializer js = new JavaScriptSerializer();
             //var model = js.Deserialize<LoginJsonMode>(data);
-            if(IsValid(email, password))
+            if (IsValid(email, password))
             {
                 FormsAuthentication.SetAuthCookie(email, false);
                 ViewBag.UserName = email;
@@ -179,7 +180,7 @@ namespace testMVC4.Controllers
             if (Session["UserName"] != null)
             {
                 var user = services.UserService.GetByEmail(Session["UserName"].ToString());
-                if(!user.is_admin)
+                if (!user.is_admin)
                     return RedirectToAction("Index", "Home");
 
                 return View();
@@ -204,6 +205,38 @@ namespace testMVC4.Controllers
         {
             List<NewsModel> allNews = services.NewsService.List().Select(n => new NewsModel(n)).ToList();
             return View(allNews);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult SetDoctorStatus(int id)
+        {
+            try
+            {
+                var user = new UserModel(services.UserService.GetById(id));
+                if (user != null)
+                {
+                    user.IsDoctor = !user.IsDoctor;
+                    //services.UserService.Update(user);
+                    //services.UserService.Insert(user);
+                    services.UserService.SetDoctor(user);
+                }
+                //BaseRepository<User> rep = new BaseRepository<User>();
+                //var user = rep.FirstOrDefault(x => x.Id == id);
+                //user.is_doctor = !user.is_doctor;
+                //rep.Update(user);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            var settings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
+            var JsonResult = new ContentResult
+            {
+                Content = JsonConvert.SerializeObject("redirect", settings),
+                ContentType = "application/json"
+            };
+            return JsonResult;
         }
 
         #region private methods

@@ -7,7 +7,7 @@
 <h2>DoctorsManage</h2>
 
 
-<table>
+<table id="doctors_table">
     <tr>
         <td>id</td>
         <td>name</td>
@@ -28,7 +28,30 @@
             <td>@u.Birthday</td>
             <td>@u.Email</td>
             <td>@u.IsDoctor</td>
-            <td><button>Set</button></td>
+            <td><button id="@u.Id">
+                @if(u.IsDoctor == false)
+                {
+                    <b>Set Status</b>
+                }
+                else
+                {
+                    <b>Unset Status</b>
+                }
+                </button></td>
         </tr>
     }
 </table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#doctors_table button").each(function () {
+            $(this).on('click', function () {
+                console.log($(this).attr('id') + " clicked");
+                $.post('/User/SetDoctorStatus', { id: $(this).attr('id') })
+                    .success(function (data) {
+                        window.location = "/User/DoctorsManage";
+                    });
+            });
+        });
+    });
+</script>

@@ -10,5 +10,9 @@ namespace testMVC4.Services.Interfaces
     public interface INewsService
     {
         IEnumerable<News> List();
+        void AddNews(NewsModel model);
+        News GetNewsById(int id);
+        void EditNews(NewsModel model);
+        void DeleteNews(int id);
     }
 }

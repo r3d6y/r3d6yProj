@@ -31,6 +31,7 @@ namespace testMVC4.Services
         public User Insert(UserModel model)
         {
             User userToCreate = CopyUserFromModel(model);
+            //userRepository.InsertOrUpdate(userToCreate, userToCreate.Id);
             userRepository.Insert(ref userToCreate);
             return userToCreate;
         }
@@ -124,6 +125,14 @@ namespace testMVC4.Services
             return doctorList.Where(x => x.UserModel.IsDoctor).ToList();
         }
 
+        public void SetDoctor(UserModel model)
+        {
+            var user = userRepository.FirstOrDefault(x => x.Id == model.Id);
+            user.is_doctor = model.IsDoctor;
+            userRepository.Update(user);
+        }
+
+        #region private methods
         private User CopyUserFromModel(UserModel model)
         {
             User userToCreate = new User();
@@ -166,6 +175,7 @@ namespace testMVC4.Services
             doctorToCreate.Photo = model.Photo;
             return doctorToCreate;
         }
+        #endregion
 
         public void Dispose()
         {

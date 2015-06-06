@@ -5,21 +5,49 @@
 }
 
 <h2>NewsManage</h2>
-
-<table>
-    <tr>
-        <td>id</td>
-        <td>title</td>
-        <td>edit</td>
-        <td>delete</td>
-    </tr>
-    @foreach (var u in Model)
-    {
+<div>
+    <table id="news_table">
         <tr>
-            <td>@u.Id</td>
-            <td>@u.Title</td>
-            <td><button>Edit</button></td>
-            <td><button>Delete</button></td>
+            <td>id</td>
+            <td>title</td>
+            <td>edit</td>
+            <td>delete</td>
         </tr>
-    }
-</table>
+        @foreach (var u in Model)
+        {
+            <tr id="@u.Id">
+                <td>@u.Id</td>
+                <td>@u.Title</td>
+                <td><button class="edit_button">Edit</button></td>
+                <td><button class="delete_button">Delete</button></td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div><a href="@Url.Action("AddNews", "News")">Add</a></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#news_table tr td button').each(function () {
+            $(this).on('click', function () {
+                if ($(this).attr('class') == 'edit_button') {
+                    var id2 = $(this).parent().parent().attr('id');
+                    $.post('/News/EditNewsAjax', { id: id2 })
+                        .success(function () {
+                            window.location = '/News/EditNews';
+                        });
+                }
+
+                if ($(this).attr('class') == 'delete_button') {
+                    var id2 = $(this).parent().parent().attr('id');
+                    $.post('/News/DeleteNews', { id: id2 })
+                        .success(function () {
+                            window.location = '/User/NewsManage'
+                        });
+                }
+            });
+            
+        });
+    });
+</script>
