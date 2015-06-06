@@ -13,6 +13,14 @@ namespace testMVC4.Models
 
         }
 
+        public PacientModel(PacientInfo model)
+        {
+            Id = model.Id;
+            CardNumber = model.CardNumber;
+            SocialNumber = model.SocialNumber;
+            Phone = model.Phone;
+        }
+
         public long? Id { get; set; }
         [Display(Name="Номер карты: ")]
         public int? CardNumber { get; set; }

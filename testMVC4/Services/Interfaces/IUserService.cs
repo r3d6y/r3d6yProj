@@ -23,5 +23,8 @@ namespace testMVC4.Services.Interfaces
         DoctorInfo AddDoctorInfo(DoctorModel model);
         DoctorInfo GetDoctorById(int id);
         void UpdateDoctorInfo(DoctorModel model);
+        void UpdateUserProfil(UserModel model);
+        PacientInfo GetPacientInfoById(int id);
+        void UpdatePacientProfil(PacientModel model);
     }
 }

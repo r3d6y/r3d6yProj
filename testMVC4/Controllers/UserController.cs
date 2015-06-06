@@ -272,6 +272,39 @@ namespace testMVC4.Controllers
             return View(user);
         }
 
+        [Authorize]
+        [HttpGet]
+        public ActionResult EditProfil()
+        {
+            var user = new UserModel(services.UserService.GetByEmail(Session["UserName"].ToString()));
+            return View(user);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditProfil(UserModel model)
+        {
+            services.UserService.UpdateUserProfil(model);
+            return RedirectToAction("Profil", "User");
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult EditPacientProfile()
+        {
+            var user = new UserModel(services.UserService.GetByEmail(Session["UserName"].ToString()));
+            var pacientProfil = new PacientModel(services.UserService.GetPacientInfoById((int)user.PacientInfo));
+            return View(pacientProfil);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditPacientProfile(PacientModel model)
+        {
+            services.UserService.UpdatePacientProfil(model);
+            return RedirectToAction("Profil", "User");
+        }
+
         #region private methods
         private bool IsValid(string email, string password)
         {

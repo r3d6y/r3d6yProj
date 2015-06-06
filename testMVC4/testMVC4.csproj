@@ -363,6 +363,12 @@
   <ItemGroup>
     <Content Include="Views\Doctor\EditDoctorsProfile.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\EditProfil.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\EditPacientProfile.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

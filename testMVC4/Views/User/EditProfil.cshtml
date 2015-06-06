@@ -1,0 +1,55 @@
+﻿@model testMVC4.Models.UserModel
+
+@{
+    ViewBag.Title = "EditProfil";
+}
+
+<h2>EditProfil</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Login error.");
+    <div class="t_center reg_form">
+        <fieldset>
+            @*<legend>Регистрация</legend>*@
+            <div class="input_block">
+                <div>@Html.LabelFor(u => u.UserName)</div>
+                <div>@Html.TextBoxFor(u => u.UserName, new { @class = "input" })</div>
+            </div>
+            <div class="input_block">
+                <div>@Html.LabelFor(u => u.SecondName)</div>
+                <div>@Html.TextBoxFor(u => u.SecondName, new { @class = "input" })</div>
+            </div>
+
+            <div class="input_block">
+                <div>@Html.LabelFor(u => u.LastName)</div>
+                <div>@Html.TextBoxFor(u => u.LastName, new { @class = "input" })</div>
+            </div>
+            <div class="input_block">
+                <div>@Html.LabelFor(u => u.Email)</div>
+                <div>
+                    @Html.TextBoxFor(u => u.Email, new { @class = "input disable_input" })
+                    <p>@Html.ValidationMessageFor(u => u.Email)</p>
+                </div>
+            </div>
+            @*<div class="input_block">
+                <div>@Html.LabelFor(u => u.Password)</div>
+                <div>
+                    @Html.PasswordFor(u => u.Password, new { @class = "input" })
+                    <p>@Html.ValidationMessageFor(u => u.Password)</p>
+
+                </div>
+            </div>*@
+            <div class="input_block">
+                <div>@Html.LabelFor(u => u.Birthday)</div>
+                <div>@Html.TextBoxFor(u => u.Birthday, new { @class = "input" })</div>
+            </div>
+            <div class="input_block">
+                <div>@Html.LabelFor(u => u.Address)</div>
+                <div>@Html.TextBoxFor(u => u.Address, new { @class = "input" })</div>
+            </div>
+            @Html.HiddenFor(x => x.Id)
+            <input type="submit" value="Применить изменения" class="button" />
+        </fieldset>
+    </div>
+
+}

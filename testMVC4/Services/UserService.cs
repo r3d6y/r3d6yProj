@@ -159,6 +159,32 @@ namespace testMVC4.Services
             doctorRepository.Update(doctorToUpdate);
         }
 
+        public void UpdateUserProfil(UserModel model)
+        {
+            var userProfil = userRepository.FirstOrDefault(x => x.Id == model.Id);
+            userProfil.Address = model.Address;
+            userProfil.Birthday = model.Birthday;
+            userProfil.LastName = model.LastName;
+            userProfil.SecondName = model.SecondName;
+            userProfil.UserName = model.UserName;
+            userRepository.Update(userProfil);
+        }
+
+        public PacientInfo GetPacientInfoById(int id)
+        {
+            return pacientRepository.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void UpdatePacientProfil(PacientModel model)
+        {
+            var pacientInfo = pacientRepository.FirstOrDefault(x => x.Id == model.Id);
+            pacientInfo.Phone = model.Phone;
+            pacientInfo.SocialNumber = model.SocialNumber;
+            pacientInfo.CardNumber = model.CardNumber;
+
+            pacientRepository.Update(pacientInfo);
+        }
+
         #region private methods
         private User CopyUserFromModel(UserModel model)
         {

@@ -13,15 +13,15 @@
             <div><a>Просмотр графика</a></div>
             <div><a>Просмотр записанных пациентов</a></div>
             <div><a href="@Url.Action("EditDoctorsProfile", "Doctor")">Изменение профиля врача</a></div>
-            <div><a>Изменение профиля пользователя</a></div>
+            <div><a href="@Url.Action("EditProfil", "User")">Изменение профиля пользователя</a></div>
         </div>
     }
     else
     {//pacient profil
         <div>
             <div><a>Просмотр электронных талонов</a></div>
-            <div><a>Изменение профиля пациента</a></div>
-            <div><a>Изменение профиля пользователя</a></div>
+            <div><a href="@Url.Action("EditPacientProfile", "User")">Изменение профиля пациента</a></div>
+            <div><a href="@Url.Action("EditProfil", "User")">Изменение профиля пользователя</a></div>
         </div>
     }
     
