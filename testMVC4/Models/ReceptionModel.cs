@@ -54,5 +54,17 @@ namespace testMVC4.Models
             }
             set { }
         }
+
+        public string ReceptionTime
+        {
+            get
+            {
+                string res = "";
+                res += Time.Hours.ToString() + ":" + Time.Minutes.ToString();
+                res += "-" + (Time + Duration).Hours.ToString() + ":" + (Time + Duration).Minutes.ToString();
+                return res;
+            }
+            set { }
+        }
     }
 }

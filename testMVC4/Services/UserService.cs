@@ -16,7 +16,7 @@ namespace testMVC4.Services
         private readonly BaseRepository<Location> locationRepository;
         private readonly BaseRepository<CategoryLevel> categoryRepository;
         private readonly BaseRepository<HospitalUnit> unitRepository;
-
+        private readonly BaseRepository<ReceptionHour> receptionRepository;
 
         public UserService()
         {
@@ -26,6 +26,7 @@ namespace testMVC4.Services
             locationRepository = new BaseRepository<Location>();
             categoryRepository = new BaseRepository<CategoryLevel>();
             unitRepository = new BaseRepository<HospitalUnit>();
+            receptionRepository = new BaseRepository<ReceptionHour>();
         }
 
         public User Insert(UserModel model)
@@ -128,7 +129,13 @@ namespace testMVC4.Services
             {
                 DoctorModel doctor = new DoctorModel(d);
                 UserModel user = new UserModel(userRepository.FirstOrDefault(x => x.DoctorInfo == d.Id));
-                doctorList.Add(new FullDoctorInfoModel(doctor, user));
+                List<ReceptionModel> reception = receptionRepository.ToList().Where(x => x.DoctorId == d.Id).Select(z => new ReceptionModel(z)).ToList();
+
+                //var rec = receptionRepository.ToList().Where(x => x.DoctorId == user.DoctorInfo).ToList();
+                
+                //List<ReceptionModel> reception = new List<ReceptionModel>();
+
+                doctorList.Add(new FullDoctorInfoModel(doctor, user, reception));
             }
             return doctorList.Where(x => x.UserModel.IsDoctor).ToList();
         }

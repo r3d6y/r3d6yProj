@@ -45,5 +45,21 @@ namespace testMVC4.Controllers
             return RedirectToAction("Profil", "User");
         }
 
+        [Authorize]
+        [HttpGet]
+        public ActionResult ShowReceptionHours()
+        {
+            var user = services.UserService.GetByEmail(Session["UserName"].ToString());
+            var receptionHours = services.ReceptionService.GetReceptionByUserId((int)user.Id).Select(x => new ReceptionModel(x)).ToList();
+            return View(receptionHours);
+        }
+
+        //[Authorize]
+        //[HttpPost]
+        //public ActionResult ShowReceptionHours()
+        //{
+        //    return View();
+        //}
+
     }
 }

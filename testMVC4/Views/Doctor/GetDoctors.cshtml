@@ -75,6 +75,30 @@
                     <p class="marker">Время приёма:</p>
 
                     <table class="timetable">
+
+                        <tr>
+                            @foreach (var r in d.ReceptionModel)
+                            {
+
+                                <td>
+                                    <p>@r.DayName</p>
+                                    <p>date</p>
+                                </td>
+
+                            }
+                        </tr>
+                        <tr>
+                            @foreach (var r in d.ReceptionModel)
+                            {
+
+                                <td>@r.ReceptionTime</td>
+
+                            }
+                        </tr>
+                        
+
+                    </table>
+      @*<table class="timetable">
                         <tr>
                             <td>
                                 <p>Понедельник</p>
@@ -128,7 +152,7 @@
                                 <p></p>
                             </td>
                         </tr>
-                    </table>
+                    </table>*@
 
                 </div>
             </div>

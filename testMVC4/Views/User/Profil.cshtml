@@ -10,7 +10,7 @@
     if(Model.is_doctor)
     {//doctor profil
         <div>
-            <div><a>Просмотр графика</a></div>
+            <div><a href="@Url.Action("ShowReceptionHours", "Doctor")">Просмотр графика</a></div>
             <div><a>Просмотр записанных пациентов</a></div>
             <div><a href="@Url.Action("EditDoctorsProfile", "Doctor")">Изменение профиля врача</a></div>
             <div><a href="@Url.Action("EditProfil", "User")">Изменение профиля пользователя</a></div>
