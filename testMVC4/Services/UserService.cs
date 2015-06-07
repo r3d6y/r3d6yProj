@@ -185,6 +185,11 @@ namespace testMVC4.Services
             pacientRepository.Update(pacientInfo);
         }
 
+        public int GetUserIdByDocId(int id)
+        {
+            return (int)userRepository.FirstOrDefault(x => x.DoctorInfo == id).Id;
+        }
+
         #region private methods
         private User CopyUserFromModel(UserModel model)
         {

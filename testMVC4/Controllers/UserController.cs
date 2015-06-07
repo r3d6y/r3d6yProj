@@ -305,6 +305,26 @@ namespace testMVC4.Controllers
             return RedirectToAction("Profil", "User");
         }
 
+        [Authorize]
+        [HttpGet]
+        public ActionResult OneReceptionManage(int id)
+        {
+            var receptionHour = new ReceptionModel(services.ReceptionService.GetReceptionById(id));
+            //receptionHour.Time = time;
+            //receptionHour.Duration = duration;
+            //return RedirectToAction("ReceptionManage", "User");
+            return View(receptionHour);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult OneReceptionManage(ReceptionModel model)
+        {
+            services.ReceptionService.EditReceptionHour(model);
+            var userId = services.UserService.GetUserIdByDocId(model.DoctorId);
+            return RedirectToAction("ReceptionManage", "User", new { id = userId });
+        }
+
         #region private methods
         private bool IsValid(string email, string password)
         {

@@ -15,5 +15,6 @@ namespace testMVC4.Services.Interfaces
         ReceptionHour GetReceptionById(int id);
         IEnumerable<ReceptionHour> GetReceptionByUserId(int id);
         void UpdateReceptionsForUser(List<ReceptionModel> model);
+        void EditReceptionHour(ReceptionHour model);
     }
 }

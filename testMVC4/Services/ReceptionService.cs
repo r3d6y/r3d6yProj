@@ -61,8 +61,8 @@ namespace testMVC4.Services
         public void EditReceptionHour(ReceptionModel model)
         {
             var hourToUpdate = receptionRepository.FirstOrDefault(x => x.Id == model.Id);
-            hourToUpdate.Day = model.Day;
-            hourToUpdate.Week = model.Week;
+            //hourToUpdate.Day = model.Day;
+            //hourToUpdate.Week = model.Week;
             hourToUpdate.Time = model.Time;
             hourToUpdate.Duration = model.Duration;
 
@@ -78,6 +78,11 @@ namespace testMVC4.Services
         {
             var user = userRepository.FirstOrDefault(x => x.Id == id);
             return receptionRepository.ToList().Where(x => x.DoctorId == user.DoctorInfo); //(x => x.DoctorId == user.DoctorInfo);
+        }
+
+        public void EditReceptionHour(ReceptionHour model)
+        {
+            receptionRepository.Update(model);
         }
 
 

@@ -26,5 +26,6 @@ namespace testMVC4.Services.Interfaces
         void UpdateUserProfil(UserModel model);
         PacientInfo GetPacientInfoById(int id);
         void UpdatePacientProfil(PacientModel model);
+        int GetUserIdByDocId(int id);
     }
 }
