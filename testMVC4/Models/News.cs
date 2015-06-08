@@ -12,20 +12,12 @@ namespace testMVC4.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class News
     {
         public long Id { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string PasswordSalt { get; set; }
-        public string SecondName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public System.DateTime Birthday { get; set; }
-        public string Address { get; set; }
-        public Nullable<int> DoctorInfo { get; set; }
-        public Nullable<int> PacientInfo { get; set; }
-        public bool is_admin { get; set; }
-        public bool is_doctor { get; set; }
+        public string Title { get; set; }
+        public string Text { get; set; }
+        public Nullable<System.DateTime> PostDate { get; set; }
+        public string Picture { get; set; }
     }
 }

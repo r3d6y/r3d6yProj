@@ -16,7 +16,7 @@ namespace testMVC4.Services
         private readonly BaseRepository<Location> locationRepository;
         private readonly BaseRepository<CategoryLevel> categoryRepository;
         private readonly BaseRepository<HospitalUnit> unitRepository;
-
+        private readonly BaseRepository<ReceptionHour> receptionRepository;
 
         public UserService()
         {
@@ -26,11 +26,13 @@ namespace testMVC4.Services
             locationRepository = new BaseRepository<Location>();
             categoryRepository = new BaseRepository<CategoryLevel>();
             unitRepository = new BaseRepository<HospitalUnit>();
+            receptionRepository = new BaseRepository<ReceptionHour>();
         }
 
         public User Insert(UserModel model)
         {
             User userToCreate = CopyUserFromModel(model);
+            //userRepository.InsertOrUpdate(userToCreate, userToCreate.Id);
             userRepository.Insert(ref userToCreate);
             return userToCreate;
         }
@@ -81,14 +83,22 @@ namespace testMVC4.Services
         public DoctorInfo AddDoctorInfo(DoctorModel model)
         {
             DoctorInfo doctorToCreate = CopyDoctorFromModel(model);
-            var user = userRepository.FirstOrDefault(u => u.Id == model.UserId);
-            if (user != null)
+            try
             {
-                doctorRepository.Insert(ref doctorToCreate);
-                user.DoctorInfo = (int?)doctorToCreate.Id;
-                user.is_doctor = true;
-                userRepository.Update(user);
+                var user = userRepository.FirstOrDefault(u => u.Id == model.UserId);
+                if (user != null)
+                {
+                    doctorRepository.Insert(ref doctorToCreate);
+                    user.DoctorInfo = (int?)doctorToCreate.Id;
+                    user.is_doctor = true;
+                    userRepository.Update(user);
+                }
             }
+            catch(Exception ex)
+            {
+
+            }
+            
             return doctorToCreate;
         }
 
@@ -119,11 +129,75 @@ namespace testMVC4.Services
             {
                 DoctorModel doctor = new DoctorModel(d);
                 UserModel user = new UserModel(userRepository.FirstOrDefault(x => x.DoctorInfo == d.Id));
-                doctorList.Add(new FullDoctorInfoModel(doctor, user));
+                List<ReceptionModel> reception = receptionRepository.ToList().Where(x => x.DoctorId == d.Id).Select(z => new ReceptionModel(z)).ToList();
+
+                //var rec = receptionRepository.ToList().Where(x => x.DoctorId == user.DoctorInfo).ToList();
+                
+                //List<ReceptionModel> reception = new List<ReceptionModel>();
+
+                doctorList.Add(new FullDoctorInfoModel(doctor, user, reception));
             }
             return doctorList.Where(x => x.UserModel.IsDoctor).ToList();
         }
 
+        public void SetDoctor(UserModel model)
+        {
+            var user = userRepository.FirstOrDefault(x => x.Id == model.Id);
+            user.is_doctor = model.IsDoctor;
+            userRepository.Update(user);
+        }
+
+        public DoctorInfo GetDoctorById(int id)
+        {
+            return doctorRepository.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void UpdateDoctorInfo(DoctorModel model)
+        {
+            var doctorToUpdate = doctorRepository.FirstOrDefault(x => x.Id == model.Id);
+            doctorToUpdate.AboutDoc = model.AboutDoc;
+            doctorToUpdate.CvalId = model.CvalId;
+            if(model.LocationId > 0)
+                doctorToUpdate.LocationId = model.LocationId = model.LocationId;// > 0 ? model.LocationId : doctorToUpdate.LocationId;
+            doctorToUpdate.Photo = model.Photo;
+            doctorToUpdate.UnitId = model.UnitId;
+            doctorToUpdate.WorkPhone = model.WorkPhone;
+
+            doctorRepository.Update(doctorToUpdate);
+        }
+
+        public void UpdateUserProfil(UserModel model)
+        {
+            var userProfil = userRepository.FirstOrDefault(x => x.Id == model.Id);
+            userProfil.Address = model.Address;
+            userProfil.Birthday = model.Birthday;
+            userProfil.LastName = model.LastName;
+            userProfil.SecondName = model.SecondName;
+            userProfil.UserName = model.UserName;
+            userRepository.Update(userProfil);
+        }
+
+        public PacientInfo GetPacientInfoById(int id)
+        {
+            return pacientRepository.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void UpdatePacientProfil(PacientModel model)
+        {
+            var pacientInfo = pacientRepository.FirstOrDefault(x => x.Id == model.Id);
+            pacientInfo.Phone = model.Phone;
+            pacientInfo.SocialNumber = model.SocialNumber;
+            pacientInfo.CardNumber = model.CardNumber;
+
+            pacientRepository.Update(pacientInfo);
+        }
+
+        public int GetUserIdByDocId(int id)
+        {
+            return (int)userRepository.FirstOrDefault(x => x.DoctorInfo == id).Id;
+        }
+
+        #region private methods
         private User CopyUserFromModel(UserModel model)
         {
             User userToCreate = new User();
@@ -161,11 +235,15 @@ namespace testMVC4.Services
         {
             DoctorInfo doctorToCreate = new DoctorInfo();
             doctorToCreate.CvalId = model.CvalId;
+            doctorToCreate.UnitId = model.UnitId;
             doctorToCreate.Id = model.Id;
             doctorToCreate.WorkPhone = model.WorkPhone;
             doctorToCreate.Photo = model.Photo;
+            doctorToCreate.SpecificName = model.SpecificName;
+            doctorToCreate.AboutDoc = model.AboutDoc;
             return doctorToCreate;
         }
+        #endregion
 
         public void Dispose()
         {

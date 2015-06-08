@@ -1,8 +1,9 @@
 ﻿@model testMVC4.Services.DoctorModel
 
 @{
-    ViewBag.Title = "AddDoctorInfo";
+    ViewBag.Title = "EditDoctorsProfile";
 }
+
 <div class="t_center reg_form">
     <h2>Информация о докторе</h2>
     @using (Html.BeginForm())
@@ -32,7 +33,8 @@
             <div>@Html.TextAreaFor(m => m.AboutDoc, new { @class = "input" })</div>
         </div>
 
-
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.UserId)
 
         <div class="input_block">
             <input type="submit" value="Add doctor information" class="button" />

@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using testMVC4.Models;
 
 namespace testMVC4.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         //
         // GET: /Home/
+
+        public HomeController()
+            : base(new Services.Services())
+        {
+
+        }
 
         public ActionResult Index()
         {
@@ -24,15 +31,18 @@ namespace testMVC4.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult News()
         {
-
-            return View();
+            IList<NewsModel> allNews = services.NewsService.List().Select(x => new NewsModel(x)).ToList();
+            return View(allNews);
         }
 
-        public ActionResult OneNews()
+        [HttpGet]
+        public ActionResult OneNews(int id)
         {
-            return View();
+            NewsModel model = new NewsModel(services.NewsService.GetNewsById(id));
+            return View(model);
         }
 
     }

@@ -15,9 +15,17 @@ namespace testMVC4.Services.Interfaces
         User GetById(int id);
         User GetByEmail(string email);
         void Update(UserModel model);
+        void SetDoctor(UserModel model);
         PacientInfo AddPacientInfo(PacientModel model);
         IList<CategoryLevelModel> GetCategories();
         IList<UnitModel> GetUnits();
         IList<FullDoctorInfoModel> GetDoctorsList();
+        DoctorInfo AddDoctorInfo(DoctorModel model);
+        DoctorInfo GetDoctorById(int id);
+        void UpdateDoctorInfo(DoctorModel model);
+        void UpdateUserProfil(UserModel model);
+        PacientInfo GetPacientInfoById(int id);
+        void UpdatePacientProfil(PacientModel model);
+        int GetUserIdByDocId(int id);
     }
 }

@@ -1,0 +1,18 @@
+﻿@model testMVC4.Models.NewsModel
+
+@{
+    ViewBag.Title = "EditNews";
+}
+
+<h2>EditNews</h2>
+
+@using (Html.BeginForm())
+{
+    <div>@Html.HiddenFor(x => x.Id)</div>
+    <div>@Html.LabelFor(x => x.Title)</div>
+    <div>@Html.TextBoxFor(x => x.Title)</div>
+    <div>@Html.LabelFor(x => x.Text)</div>
+    <div>@Html.TextAreaFor(x => x.Text)</div>
+
+    <input type="submit" value="Edit" />
+}

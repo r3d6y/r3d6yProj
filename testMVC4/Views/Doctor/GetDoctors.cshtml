@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IList<testMVC4.Models.FullDoctorInfoModel>
+@{
     ViewBag.Title = "GetDoctors";
 }
 
@@ -35,98 +36,129 @@
             <li><a href="">Педиатр</a></li>
         </ul>
     </div>
+    @{
+        foreach (var d in Model)
+        {
+            <div>
+                <div class="info_block fl doctor_block info_block_padding">
 
-    <div>
-        <div class="info_block fl doctor_block info_block_padding">
+                    <div class="doctor_photo fl">
+                        <img src="~/Content/img/doctor_photo1.png" />
+                    </div>
+                    <div class="doctors_info fl">
+                        <p class="name">@d.UserModel.UserName @d.UserModel.SecondName @d.UserModel.LastName</p>
+                        @*<p>Врач-аллерголог высшей категории</p>*@
+                        <p>@d.DoctorModel.SpecificName</p>
+                        @*<p>Детский врач-аллерголог высшей категории</p>*@
+                        @*<p>@d.DoctorModel</p>*@
+                        <div class="specialization">
+                            <p>Подразделение: @d.DoctorModel.Unit.Unit</p>
+                        </div>
+                    </div>
 
-            <div class="doctor_photo fl">
-                <img src="~/Content/img/doctor_photo1.png" />
-            </div>
-            <div class="doctors_info fl">
-                <p class="name">САФРОНКОВА НАТАЛЬЯ ИВАНОВНА</p>
-                <p>Врач-аллерголог высшей категории</p>
-                <p>Детский врач-аллерголог высшей категории</p>
-                <div class="specialization">
-                    <p>Подразделение: Дерматология</p>
+                    <div class="fr">
+                        <div class="button_wrap">
+                            <a href="" class="button_small">Задать вопрос</a>
+                        </div>
+                        <div class="button_wrap">
+                            <a href="" class="button_small" id="enroll">Записаться на приём</a>
+                        </div>
+                        <div class="toggle_wrap">
+                            <span id="arrow_toggle" class="arrow_toggle"></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="toggle_doctor" class="info_block doctor_block info_block_padding fl">
+                    <p>	@d.DoctorModel.AboutDoc </p>
+
+                    <p class="marker">Кабинет №2: ЛОР</p>
+                    <p class="marker">Время приёма:</p>
+
+                    <table class="timetable">
+
+                        <tr>
+                            @foreach (var r in d.ReceptionModel)
+                            {
+
+                                <td>
+                                    <p>@r.DayName</p>
+                                    <p>date</p>
+                                </td>
+
+                            }
+                        </tr>
+                        <tr>
+                            @foreach (var r in d.ReceptionModel)
+                            {
+
+                                <td>@r.ReceptionTime</td>
+
+                            }
+                        </tr>
+                        
+
+                    </table>
+      @*<table class="timetable">
+                        <tr>
+                            <td>
+                                <p>Понедельник</p>
+                                <p>21.05.2015</p>
+                            </td>
+                            <td>
+                                <p>Вторник</p>
+                                <p>22.05.2015</p>
+                            </td>
+                            <td>
+                                <p>Среда</p>
+                                <p>23.05.2015</p>
+                            </td>
+                            <td>
+                                <p>Четверг</p>
+                                <p>24.05.2015</p>
+                            </td>
+                            <td>
+                                <p>Пятница</p>
+                                <p>25.05.2015</p>
+                            </td>
+                            <td>
+                                <p>Суббота</p>
+                                <p>26.05.2015</p>
+                            </td>
+                            <td>
+                                <p>Воскресенье</p>
+                                <p>27.05.2015</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>8:00-15:00</p>
+                            </td>
+                            <td>
+                                <p>8:00-15:00</p>
+                            </td>
+                            <td>
+                                <p></p>
+                            </td>
+                            <td>
+                                <p>15:00-18:00</p>
+                            </td>
+                            <td>
+                                <p>15:00-18:00</p>
+                            </td>
+                            <td>
+                                <p></p>
+                            </td>
+                            <td>
+                                <p></p>
+                            </td>
+                        </tr>
+                    </table>*@
+
                 </div>
             </div>
+        }
+    }
 
-            <div class="fr">
-                <div class="button_wrap">
-                    <a href="" class="button_small">Задать вопрос</a>
-                </div>
-                <div class="button_wrap">
-                    <a href="" class="button_small" id="enroll">Записаться на приём</a>
-                </div>
-                <div class="toggle_wrap">
-                    <span id="arrow_toggle" class="arrow_toggle"></span>
-                </div>
-            </div>
-        </div>
-        <div id="toggle_doctor" class="info_block doctor_block info_block_padding fl">
-            <p>	Заведующий ЛОР-кабинетом «Клиники семейной медицины». Врач высшей категории, кандидат медицинских наук, доцент. Выпускник Днепропетровского медицинского института. Первичную специализацию прошел в 1966г. в ЛОР-Клинике ДМИ под руководством профессора Л.А. Луковского и доцента Г.М. Тытаря. Владеет современными методами диагностики, консервативного и хирургического лечения заболеваний ЛОР-органов. </p>
-
-                <p class="marker">Кабинет №2: ЛОР</p>
-                <p class="marker">Время приёма:</p>
-
-            <table class="timetable">
-                <tr>
-                    <td>
-                        <p>Понедельник</p>
-                        <p>21.05.2015</p>
-                    </td>
-                    <td>
-                        <p>Вторник</p>
-                        <p>22.05.2015</p>
-                    </td>
-                    <td>
-                        <p>Среда</p>
-                        <p>23.05.2015</p>
-                    </td>
-                    <td>
-                        <p>Четверг</p>
-                        <p>24.05.2015</p>
-                    </td>
-                    <td>
-                        <p>Пятница</p>
-                        <p>25.05.2015</p>
-                    </td>
-                    <td>
-                        <p>Суббота</p>
-                        <p>26.05.2015</p>
-                    </td>
-                    <td>
-                        <p>Воскресенье</p>
-                        <p>27.05.2015</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>8:00-15:00</p>
-                    </td>
-                    <td>
-                        <p>8:00-15:00</p>
-                    </td>
-                    <td>
-                        <p></p>
-                    </td>
-                    <td>
-                        <p>15:00-18:00</p>
-                    </td>
-                    <td>
-                        <p>15:00-18:00</p>
-                    </td>
-                    <td>
-                        <p></p>
-                    </td>
-                    <td>
-                        <p></p>
-                    </td>
-                </tr>
-            </table>
-
-        </div>
-    </div>
 
     <div class="clear"></div>
 </div>

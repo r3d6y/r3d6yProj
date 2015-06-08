@@ -878,3 +878,7 @@ label {
     text-align: center;
     color: #e8204a;
 }
+
+.disable_input{
+    disabled: disabled;
+}

@@ -1,0 +1,33 @@
+﻿@model testMVC4.Models.User
+
+@{
+    ViewBag.Title = "Profil";
+}
+
+<h2>Profil</h2>
+
+@{
+    if(Model.is_doctor)
+    {//doctor profil
+        <div>
+            <div><a href="@Url.Action("ShowReceptionHours", "Doctor")">Просмотр графика</a></div>
+            <div><a>Просмотр записанных пациентов</a></div>
+            <div><a href="@Url.Action("EditDoctorsProfile", "Doctor")">Изменение профиля врача</a></div>
+            <div><a href="@Url.Action("EditProfil", "User")">Изменение профиля пользователя</a></div>
+        </div>
+    }
+    else
+    {//pacient profil
+        <div>
+            <div><a>Просмотр электронных талонов</a></div>
+            <div><a href="@Url.Action("EditPacientProfile", "User")">Изменение профиля пациента</a></div>
+            <div><a href="@Url.Action("EditProfil", "User")">Изменение профиля пользователя</a></div>
+        </div>
+    }
+    
+    if(Model.is_admin)
+    {//administrator features
+        <div><a href="@Url.Action("Administrate", "User")">Администрирование сайта</a></div>
+    }
+    <div><a href="@Url.Action("LogOut", "User")">Выход</a></div>
+}

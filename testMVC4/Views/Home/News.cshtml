@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<testMVC4.Models.NewsModel>
+
+@{
     ViewBag.Title = "News";
 }
 
@@ -17,7 +19,27 @@
         </ul>
     </div>
 
-    <div class="info_block info_block_padding news_block fl">
+    @{
+        foreach (var n in Model)
+        {
+            <div class="info_block info_block_padding news_block fl">
+                <div class="news_img fl">
+                    <img src="~/Content/img/news1.jpg" />
+                </div>
+                <div class="news_info fl">
+                    <h3>@n.Title</h3>
+                    <p>@n.Text</p>
+                </div>
+                <div class="news_block_footer">
+                    <p class="fl">20 мая 2015</p>
+                    <a class="button_small fr" href="@Url.Action("OneNews", "Home", new { id = @n.Id })">Подробнее</a>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        }
+    }
+    @*<div class="info_block info_block_padding news_block fl">
         <div class="news_img fl">
             <img src="~/Content/img/news1.jpg" />
         </div>
@@ -31,6 +53,6 @@
         </div>
     </div>
 
-    <div class="clear"></div>
+    <div class="clear"></div>*@
 </div>
 

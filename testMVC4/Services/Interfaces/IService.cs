@@ -9,5 +9,7 @@ namespace testMVC4.Services.Interfaces
     public interface IService
     {
         IUserService UserService { get; }
+        INewsService NewsService { get; }
+        IReceptionService ReceptionService { get; }
     }
 }

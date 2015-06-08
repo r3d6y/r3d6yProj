@@ -16,7 +16,7 @@ namespace testMVC4.Repositories
 
         public BaseRepository()
         {
-            _context = new hospitalDBEntities();
+            _context = new hospitalDBEntities1();
             _objectSet = _context.Set<T>();
         }
 
@@ -44,14 +44,14 @@ namespace testMVC4.Repositories
 
         public virtual void Update(T model)
         {
-            _context.Entry<T>(model).State = EntityState.Modified;
+            _context.Entry<T>(model).State = EntityState.Modified;//EntityState.Unchanged;
             _context.SaveChanges();
         }
 
         public virtual void Update(IEnumerable<T> entities)
         {
             foreach (var model in entities)
-                _context.Entry<T>(model).State = EntityState.Modified;
+                _context.Entry<T>(model).State = EntityState.Modified;//.Unchanged;//Modified;
             _context.SaveChanges();
         }
 

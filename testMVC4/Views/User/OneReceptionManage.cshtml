@@ -1,0 +1,25 @@
+﻿@model testMVC4.Models.ReceptionModel
+
+@{
+    ViewBag.Title = "OneReceptionManage";
+}
+
+<h2>OneReceptionManage</h2>
+
+@using (Html.BeginForm())
+{
+    <div><p>День недели</p></div>
+    <div>@Html.LabelFor(x => x.DayName)</div>
+    
+    <div><p>Время начала приема</p></div>
+    <div>@Html.TextBoxFor(x => x.Time)</div>
+    
+    <div><p>Длительность приема</p></div>
+    <div>@Html.TextBoxFor(x => x.Duration)</div>
+    
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.DoctorId)
+    
+    <input type="submit" />
+    
+}

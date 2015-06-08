@@ -150,69 +150,77 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Models\CategoryLevel.cs">
-      <DependentUpon>HostpitalModel.tt</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoryLevelModel.cs" />
-    <Compile Include="Models\DoctorCvalification.cs">
-      <DependentUpon>HostpitalModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DoctorInfo.cs">
-      <DependentUpon>HostpitalModel.tt</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FullDoctorInfoModel.cs" />
     <Compile Include="Models\History.cs">
-      <DependentUpon>HostpitalModel.tt</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HospitalModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HospitalModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HospitalModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HospitalModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HospitalModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\HospitalUnit.cs">
-      <DependentUpon>HostpitalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HostpitalModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HostpitalModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HostpitalModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HostpitalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HostpitalModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HostpitalModel.edmx</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Location.cs">
-      <DependentUpon>HostpitalModel.tt</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LocationModel.cs" />
+    <Compile Include="Models\LoginJsonMode.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\News.cs">
+      <DependentUpon>HospitalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewsModel.cs" />
     <Compile Include="Models\PacientInfo.cs">
-      <DependentUpon>HostpitalModel.tt</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PacientModel.cs" />
     <Compile Include="Models\ReceptionHour.cs">
-      <DependentUpon>HostpitalModel.tt</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReceptionModel.cs" />
     <Compile Include="Models\ReceptionTicket.cs">
-      <DependentUpon>HostpitalModel.tt</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitModel.cs" />
     <Compile Include="Models\User.cs">
-      <DependentUpon>HostpitalModel.tt</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Models\DoctorModel.cs" />
     <Compile Include="Models\DoctorCvalificationModel.cs" />
+    <Compile Include="Services\Interfaces\INewsService.cs" />
+    <Compile Include="Services\Interfaces\IReceptionService.cs" />
     <Compile Include="Services\Interfaces\IService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
+    <Compile Include="Services\NewsService.cs" />
+    <Compile Include="Services\ReceptionService.cs" />
     <Compile Include="Services\Services.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
@@ -248,23 +256,6 @@
     <Content Include="Content\img\photo2.png" />
     <Content Include="Content\img\photo3.png" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Models\HostpitalModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HostpitalModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\HostpitalModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HostpitalModel.edmx</DependentUpon>
-      <LastGenOutput>HostpitalModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\HostpitalModel.edmx.diagram">
-      <DependentUpon>HostpitalModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\HostpitalModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HostpitalModel.edmx</DependentUpon>
-      <LastGenOutput>HostpitalModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Content\fonts\96089.eot" />
     <Content Include="Content\fonts\96089.ttf" />
     <Content Include="Content\fonts\96089.woff" />
@@ -326,6 +317,63 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\OneNews.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\Administrate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\DoctorsManage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\NewsManage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\News\AddNews.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\News\EditNews.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\HospitalModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HospitalModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\HospitalModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HospitalModel.edmx</DependentUpon>
+      <LastGenOutput>HospitalModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HospitalModel.edmx.diagram">
+      <DependentUpon>HospitalModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\HospitalModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HospitalModel.edmx</DependentUpon>
+      <LastGenOutput>HospitalModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\ReceptionManage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\Profil.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Doctor\EditDoctorsProfile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\EditProfil.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\EditPacientProfile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\OneReceptionManage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Doctor\ShowReceptionHours.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

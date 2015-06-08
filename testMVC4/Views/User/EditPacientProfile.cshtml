@@ -1,0 +1,34 @@
+﻿@model testMVC4.Models.PacientModel
+
+@{
+    ViewBag.Title = "EditPacientProfile";
+}
+
+<h2>EditPacientProfile</h2>
+<div class="t_center reg_form">
+    @*<h2>RegistrationPacientStep</h2>*@
+
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(x => x.Id)
+        <div class="input_block">
+            <div>@Html.LabelFor(m => m.CardNumber)</div>
+            <div>@Html.TextBoxFor(m => m.CardNumber, new { @class = "input" })</div>
+        </div>
+
+        <div class="input_block">
+            <div>@Html.LabelFor(m => m.SocialNumber)</div>
+            <div>@Html.TextBoxFor(m => m.SocialNumber, new { @class = "input" })</div>
+        </div>
+
+        <div class="input_block">
+            <div>@Html.LabelFor(m => m.Phone)</div>
+            <div>@Html.TextBoxFor(m => m.Phone, new { @class = "input" })</div>
+            <div>@Html.HiddenFor(m => m.UserId)</div>
+        </div>
+        <div class="input_block">
+            <input type="submit" value="Добавить информацию о пациенте" class="button" />
+        </div>
+
+    }
+</div>
