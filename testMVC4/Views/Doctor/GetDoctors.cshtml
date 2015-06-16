@@ -10,11 +10,20 @@
 
             <div class="pop_up_padding">
                 <h2>Оформить талон</h2>
-                <p class="name">Сафронкова Наталья Ивановна</p>
-                <p class="marker">Аллерголог</p>
-                <button>Записаться</button>
-                <p class="error">Запись выполнена</p>
-                <button>Распечатать</button>
+                <div id="form_wrap">
+                    <p class="name">Сафронкова Наталья Ивановна</p>
+                    <p class="marker">Аллерголог</p>
+                    <p>Дата</p>
+                    <input />
+                    <p>Время</p>
+                    <input />
+                    <br />
+                    <br />
+                    <button id="getOrder">Записаться</button>
+                </div>
+                <p class="error" style="display:none;">Запись выполнена</p>
+                <br />
+                <button id="getPrint" style="display:none;">Распечатать</button>
             </div>
     </div>
 
@@ -79,20 +88,16 @@
                         <tr>
                             @foreach (var r in d.ReceptionModel)
                             {
-
                                 <td>
                                     <p>@r.DayName</p>
                                     <p>date</p>
                                 </td>
-
                             }
                         </tr>
                         <tr>
                             @foreach (var r in d.ReceptionModel)
                             {
-
                                 <td>@r.ReceptionTime</td>
-
                             }
                         </tr>
                         

@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="testMVC4.Controllers.BaseController">
+    <Position X="7.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Controllers\BaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Controllers.DoctorController">
+    <Position X="6" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAACAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAA=</HashCode>
+      <FileName>Controllers\DoctorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Controllers.HomeController">
+    <Position X="10.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAEAAAAAAAAAAAAgAAAAAAIAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Controllers.NewsController">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAgAAAAAAAAAAAABAAAAAAAAAAAEAAEAAAAA=</HashCode>
+      <FileName>Controllers\NewsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Controllers.UserController">
+    <Position X="8.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAACgAAQAABAEAggAIAACAgAAADgAAAEAIAAEAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Models.CategoryLevelModel">
+    <Position X="3" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CategoryLevelModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Models.FullDoctorInfoModel">
+    <Position X="3" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAIAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Models\FullDoctorInfoModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Models.LocationModel">
+    <Position X="3" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAEAAAAAAA=</HashCode>
+      <FileName>Models\LocationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Models.LoginJsonMode">
+    <Position X="6.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LoginJsonMode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Models.LoginModel">
+    <Position X="5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LoginModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Models.NewsModel">
+    <Position X="6.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\NewsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Models.PacientModel">
+    <Position X="5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAIEAAAAA=</HashCode>
+      <FileName>Models\PacientModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Models.ReceptionModel">
+    <Position X="10.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAIAACAAABAAAAAAAAAAACAAAAAAAAAIgAAQA=</HashCode>
+      <FileName>Models\ReceptionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Models.UnitModel">
+    <Position X="3" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UnitModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Models.UserModel">
+    <Position X="8.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAgAACAAAAAAAAAAAAAACAAIAAACAQACAAAEAAg=</HashCode>
+      <FileName>Models\UserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Services.DoctorCvalificationModel">
+    <Position X="5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DoctorCvalificationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Services.DoctorModel">
+    <Position X="6.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAaAAAAgAAAACAAIAAAAAgAAABAAAABEAAEAABACAA=</HashCode>
+      <FileName>Models\DoctorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="testMVC4.Services.NewsService" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAgAAAAAAAAAAAABAAAAAAAAAAAAAACAAACI=</HashCode>
+      <FileName>Services\NewsService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="testMVC4.Services.ReceptionService" BaseTypeListCollapsed="true">
+    <Position X="5" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAgAAAAEAAAEEIAAAAAAgAAAAIAAAAAAIAAABA=</HashCode>
+      <FileName>Services\ReceptionService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="testMVC4.Services.Services" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAACEAAAAgAAAAAAAAIAAAACAAAAAAAA=</HashCode>
+      <FileName>Services\Services.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="testMVC4.Services.UserService" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAYCYEACACIABACMABkECAAAAQGAAAIAAABAIIAAEII=</HashCode>
+      <FileName>Services\UserService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="testMVC4.Repositories.BaseRepository&lt;T&gt;">
+    <Position X="10.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAFAYAAAABAAAAAAAAAAAAAEAAAAAAAgBAAAAAAA=</HashCode>
+      <FileName>Repositories\BaseRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="testMVC4.Services.Interfaces.INewsService">
+    <Position X="8.5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAgAAAAAAAAAAAABAAAAAAAAAAAAAACAAAAI=</HashCode>
+      <FileName>Services\Interfaces\INewsService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="testMVC4.Services.Interfaces.IReceptionService">
+    <Position X="5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAEAAAAEIAAAAAAgAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Services\Interfaces\IReceptionService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="testMVC4.Services.Interfaces.IService">
+    <Position X="6.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAgAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="testMVC4.Services.Interfaces.IUserService">
+    <Position X="3.25" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQCQEACAAIAAAAEABAEAAAAAQGAAAAAAABAIAAAEII=</HashCode>
+      <FileName>Services\Interfaces\IUserService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

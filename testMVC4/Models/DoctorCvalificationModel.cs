@@ -21,7 +21,7 @@ namespace testMVC4.Services
         //}
 
         //public long Id { get; set; }
-        //[Display(Name="Квалификация")]
+        //[Display(Name = "Квалификация")]
         //public string CategoryName { get; set; }
         //public int LevelId { get; set; }
     }

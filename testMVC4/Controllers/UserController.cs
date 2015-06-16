@@ -55,13 +55,10 @@ namespace testMVC4.Controllers
         [HttpPost]
         public ActionResult LoginAjax(string email, string password)
         {
-            //JavaScriptSerializer js = new JavaScriptSerializer();
-            //var model = js.Deserialize<LoginJsonMode>(data);
             if (IsValid(email, password))
             {
                 FormsAuthentication.SetAuthCookie(email, false);
                 ViewBag.UserName = email;
-                //return RedirectToAction("Index", "Home");
                 var settings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
                 var JsonResult = new ContentResult
                 {
@@ -80,9 +77,9 @@ namespace testMVC4.Controllers
                     ContentType = "application/json"
                 };
                 return JsonResult;
-                //return RedirectToAction("Index", "Home");
+                
             }
-            //return RedirectToAction("Index", "Home");
+            
         }
 
         [HttpGet]
